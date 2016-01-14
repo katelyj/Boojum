@@ -10,6 +10,7 @@ public class Briefcase {
     private int value;
     private boolean open;
 
+
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public Briefcase(int x) {
@@ -17,6 +18,7 @@ public class Briefcase {
 	value = 0;
 	open = false;
     }
+
 
     // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
 

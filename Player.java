@@ -27,6 +27,7 @@ public class Player {
 	likeability = 0.5;
     }
 
+
     // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~
 
     // gets and returns name from the user
