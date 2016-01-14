@@ -57,6 +57,9 @@ public class Player {
 	    try {
 		n = Integer.parseInt(in.readLine());
 	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
 	    catch ( IOException e ) {}
 	    
 	}
@@ -75,7 +78,7 @@ public class Player {
 	    return "\nCongrats, you are a lucky person!";
 	}
 	else {
-	    System.out.println("Um, no. \n");
+	    System.out.println("\nUm, no.");
 	    return inputMode();
 	}
     }

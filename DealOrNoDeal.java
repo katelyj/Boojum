@@ -13,11 +13,10 @@ public class DealOrNoDeal {
 
     private Player you;
     private ArrayList cases;
+    // make a final and copy version of this:
     private int[] values = {1,5,10,15,25,50,75,
-			    100,200,300,400,500,750,
-			    1000,5000,10000,25000,50000,75000,
-			    100000,200000,300000,400000,500000,750000,
-			    1000000};
+			    100,200,500,750,1000,5000,10000,25000,50000,75000,
+			    100000,200000,300000,400000,500000,750000,1000000};
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -65,12 +64,21 @@ public class DealOrNoDeal {
     public void displayBoard() {
 	String s = "";
 
-	// MAJOR WORK IN PROGRESS
-	for ( int x = cases.size() - 1 ; x >= 0 ; x-- ) {
-	    if ( x == 6 || x == 13 || x == 20 ) {
-		s += "\n";
+	// puts values in a 2d array (makes it easier to display neatly later)
+	int[][] d = new int[4][cases.size()/4]; // 4 rows
+	int count = cases.size() - 1;
+	for ( int x = 0 ; x < d.length ; x++ ) {
+	    for ( int y = 0 ; y < d[x].length ; y++ ) {
+		d[x][y] = count;
+		count -= 1;
 	    }
-	    s += x + "\t";
+	}
+
+	for ( int x = 0 ; x < d.length ; x++ ) {
+	    for ( int y = d[x].length - 1 ; y >= 0 ; y-- ) {
+		s += d[x][y] + "\t";
+	    }
+	    s += "\n";
 	}
 	
 	System.out.println(s);
