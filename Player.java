@@ -24,7 +24,9 @@ public class Player {
 	in = new BufferedReader( isr );
 	name = inputName();
 	luck = 0.5;
-	likeability = 0.5;
+	likability = 0.5;
+	System.out.println(inputMode());
+	
     }
 
 
@@ -42,33 +44,41 @@ public class Player {
 	}
 	return n;
     }
-   // gets and returns mode from the user
+    
+   // sets mode
     public String inputMode() {
 	int n = 0;
-	while ( n == 0 ) { // to ensure non-empty names
-	    System.out.println("Please type 1 if you would like to be a regular player" +
-	    "\n Please type 2 if you would like to be a likable player, but unlucky" +
-	    "\n Please type 3 if you would like to be a lucky player, but not likable");
+	while ( n == 0 ) {
+	    
+	    System.out.println("\nPlease type 1 if you would like to be a regular player." +
+	    "\nPlease type 2 if you would like to be a likable player, but unlucky." +
+	    "\nPlease type 3 if you would like to be a lucky player, but not likable.\n");
+	    
 	    try {
-		n = in.parseInt(in.readLine());
+		n = Integer.parseInt(in.readLine());
 	    }
 	    catch ( IOException e ) {}
+	    
 	}
 	
-	if (n == 2){
-		return "Congrats, you are a regular person!";
+	if ( n == 1 ) {
+	    return "\nCongrats, you are a regular person!";
 	}
-	if (n == 2){
-		setLikability((getLikablility() + 1));
-		return "Congrats, you are a likable person!";
+	if ( n == 2 ) {
+	    setLuck(0.25);
+	    setLikability(0.75);
+	    return "\nCongrats, you are a likable person!";
 	}
-	if (n == 3){
-		setLuck(getLuck() + .1);
-		return "Congrats, you are a lucky person!"
+	if ( n == 3 ) {
+	    setLuck(0.75);
+	    setLikability(0.25);
+	    return "\nCongrats, you are a lucky person!";
+	}
 	else {
-		return "please specify your mode";
+	    System.out.println("Um, no. \n");
+	    return inputMode();
 	}
-	    }
+    }
 
     // accessor for name
     public String getName() {
@@ -82,13 +92,17 @@ public class Player {
 
     // accessor for likeability
     public double getLikability() {
-	return likeability;
+	return likability;
     }
-    public void setLikability(double i){
-    	likability = i;
-    }
-    public void setLuck(double i){
+
+    // mutator for luck
+    public void setLuck(double i) {
     	luck = i;
+    }
+
+    // mutator for likeability
+    public void setLikability(double i) {
+    	likability = i;
     }
 
     // mutator for yourCase

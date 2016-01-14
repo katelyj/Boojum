@@ -29,6 +29,5 @@ public class Briefcase {
     public boolean isOpen(){
     	return open;
     }
-    }
     
 }
