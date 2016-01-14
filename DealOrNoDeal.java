@@ -13,9 +13,11 @@ public class DealOrNoDeal {
 
     private Player you;
     private ArrayList cases;
-    private int[] values = {1,2,3,10,25,70,100,200,300,400,500,750,
-		  1000,5000,10000,25000,50000,75000,
-		  200000,300000,400000,500000,750000,1000000};
+    private int[] values = {1,5,10,15,25,50,75,
+			    100,200,300,400,500,750,
+			    1000,5000,10000,25000,50000,75000,
+			    100000,200000,300000,400000,500000,750000,
+			    1000000};
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -29,7 +31,7 @@ public class DealOrNoDeal {
 
 	// sets up arrayList of briefcases
 	cases = new ArrayList<Briefcase>();
-	for ( int x = 0 ; x < 26 ; x++ ) {
+	for ( int x = 0 ; x < values.length ; x++ ) {
 	    cases.add(x,new Briefcase(x));
 	}
 
@@ -59,12 +61,29 @@ public class DealOrNoDeal {
         }
     }
 
+    // displays the game board
+    public void displayBoard() {
+	String s = "";
+
+	// MAJOR WORK IN PROGRESS
+	for ( int x = cases.size() - 1 ; x >= 0 ; x-- ) {
+	    if ( x == 6 || x == 13 || x == 20 ) {
+		s += "\n";
+	    }
+	    s += x + "\t";
+	}
+	
+	System.out.println(s);
+    }
+
     // time to play!
     public void play(){
 	
 	String t = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 
 	System.out.println(t);
+
+	displayBoard();
 
     }
 

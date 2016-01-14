@@ -22,6 +22,11 @@ public class Briefcase {
 
     // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
 
+    // accessor for number
+    public int getNumber() {
+	return number;
+    }
+
     // mutator for value
     public void setValue(int x) {
 	value = x;
