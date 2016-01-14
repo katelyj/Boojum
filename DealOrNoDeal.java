@@ -42,6 +42,16 @@ public class DealOrNoDeal {
 	
 	you = new Player();
     }
+    public void choose(int i){
+    	int val = cases[i];
+    	int pos = 0;
+    	for (int i =0; i < values.length(); i++){
+    		if (values[i] == val){
+    			values[i] = 0;
+    		}
+    	}
+    	
+    }
 
     
     // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
