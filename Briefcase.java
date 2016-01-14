@@ -22,10 +22,12 @@ public class Briefcase {
 
     // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
 
+    // mutator for value
     public void setValue(int x) {
 	value = x;
     }
     
+    // returns if the briefcase is open or not
     public boolean isOpen() {
     	return open;
     }
