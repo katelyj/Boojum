@@ -25,6 +25,7 @@ public class Player {
 	name = inputName();
 	luck = 0.5;
 	likability = 0.5;
+	yourCase = -1;
 	System.out.println(inputMode());
 	
     }
@@ -82,32 +83,21 @@ public class Player {
 	    return inputMode();
 	}
     }
-    public String choose(){
-String n = "";
-	while ( n.equals("") ) { // to ensure non-empty names
-	    System.out.println("Choose a case \n");
-	    try {
-		n = in.readLine();
-	    }
-	    catch ( IOException e ) {}
-	}
-	return n;
-    }
 
-    //set your own case (the first that you pick)
+    // mutator for yourCase
     public void setYourCase(){
-	String n = "";
-	while ( n.equals("") ) { // to ensure non-empty names
+	while ( yourCase == -1 ) {
 	    System.out.println("Choose a case \n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
 	    }
 	    catch ( IOException e ) {}
+	    // add another exception here
 	}
-	System.out.println ("your case is: " + yourCase);
+	System.out.println ("Your case is: " + yourCase "!\n");
     }
        
-    //accessor for case
+    // accessor for case
     public int getYourCase(){
 	return yourCase;
     }

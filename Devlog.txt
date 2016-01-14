@@ -13,4 +13,5 @@ RIP David Bowie.
 2015-01-14 Kate and Bayle
 We worked on displaying the game board.
 We also made to-do.txt, a UML diagram, and a flowchart.
+In class, we worked on choosing your initial briefcase.
 RIP Alan Rickman.
