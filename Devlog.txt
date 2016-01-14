@@ -9,3 +9,8 @@ We also created the driver file, DealOrNoDeal.java, and wrote some basic content
 Tomorrow, we will further develop Briefcase and Player, our two most important classes at the moment.
 We will also discuss the relationships between all our prospective classes.
 RIP David Bowie.
+
+2015-01-14 Kate and Bayle
+We worked on displaying the game board.
+We also made to-do.txt, a UML diagram, and a flowchart.
+RIP Alan Rickman.

@@ -74,9 +74,16 @@ public class DealOrNoDeal {
 	    }
 	}
 
+	int count1 = cases.size() - 1;
 	for ( int x = 0 ; x < d.length ; x++ ) {
 	    for ( int y = d[x].length - 1 ; y >= 0 ; y-- ) {
-		s += d[x][y] + "\t";
+		if ( ! ((Briefcase)cases.get(count1)).isOpen() ) {
+		    s += d[x][y] + "\t";
+		}
+		else {
+		    s += "\t";
+		}
+	        count1 -= 1;
 	    }
 	    s += "\n";
 	}
