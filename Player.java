@@ -82,6 +82,36 @@ public class Player {
 	    return inputMode();
 	}
     }
+    public String choose(){
+String n = "";
+	while ( n.equals("") ) { // to ensure non-empty names
+	    System.out.println("Choose a case \n");
+	    try {
+		n = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+	}
+	return n;
+    }
+
+    //set your own case (the first that you pick)
+    public void setYourCase(){
+	String n = "";
+	while ( n.equals("") ) { // to ensure non-empty names
+	    System.out.println("Choose a case \n");
+	    try {
+		yourCase = Integer.parseInt(in.readLine());
+	    }
+	    catch ( IOException e ) {}
+	}
+	System.out.println ("your case is: " + yourCase);
+    }
+       
+    //accessor for case
+    public int getYourCase(){
+	return yourCase;
+    }
+
 
     // accessor for name
     public String getName() {
@@ -106,11 +136,6 @@ public class Player {
     // mutator for likeability
     public void setLikability(double i) {
     	likability = i;
-    }
-
-    // mutator for yourCase
-    public void setCase( int c ) {
-	yourCase = c;
     }
 
 } // end class Player

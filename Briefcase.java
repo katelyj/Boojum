@@ -31,6 +31,10 @@ public class Briefcase {
     public void setValue(int x) {
 	value = x;
     }
+
+    public void setOpen(boolean b){
+	open = b;
+    }
     
     // returns if the briefcase is open or not
     public boolean isOpen() {

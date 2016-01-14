@@ -99,6 +99,10 @@ public class DealOrNoDeal {
 	System.out.println(t);
 
 	displayBoard();
+	you.setYourCase();
+	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
+
+
 
     }
 
