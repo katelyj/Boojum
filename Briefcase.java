@@ -37,7 +37,7 @@ public class Briefcase {
 	value = x;
     }
 
-
+    // mutator for open
     public void setOpen(boolean b) {
 	open = b;
     }
@@ -47,4 +47,4 @@ public class Briefcase {
     	return open;
     }
     
-}
+} // end class briefcase
