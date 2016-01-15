@@ -66,35 +66,38 @@ public class Player {
 	}
 	
 	if ( n == 1 ) {
-	    return "\nCongrats, you are a regular person!";
+	    return "\nCongrats, you are a regular person!\nNow let's begin...";
 	}
 	if ( n == 2 ) {
 	    setLuck(0.25);
 	    setLikability(0.75);
-	    return "\nCongrats, you are a likable person!";
+	    return "\nCongrats, you are a likable person!\nNow let's begin...";
 	}
 	if ( n == 3 ) {
 	    setLuck(0.75);
 	    setLikability(0.25);
-	    return "\nCongrats, you are a lucky person!";
+	    return "\nCongrats, you are a lucky person!\nNow let's begin...";
 	}
 	else {
 	    System.out.println("\nUm, no.");
 	    return inputMode();
 	}
+	
     }
 
     // mutator for yourCase
-    public void setYourCase(){
-	while ( yourCase == -1 ) {
-	    System.out.println("Choose a case \n");
+    public void setYourCase() {
+	while ( yourCase < 0 || yourCase > 24 ) {
+	    System.out.println("\nChoose a case... \n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
 	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
 	    catch ( IOException e ) {}
-	    // add another exception here
 	}
-	System.out.println ("Your case is: " + yourCase "!\n");
+	System.out.println("\nYour case is: " + yourCase + "!\n");
     }
        
     // accessor for case

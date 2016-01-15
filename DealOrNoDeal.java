@@ -62,7 +62,7 @@ public class DealOrNoDeal {
 
     // displays the game board
     public void displayBoard() {
-	String s = "";
+	String s = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 
 	// puts values in a 2d array (makes it easier to display neatly later)
 	int[][] d = new int[4][cases.size()/4]; // 4 rows
@@ -74,19 +74,21 @@ public class DealOrNoDeal {
 	    }
 	}
 
-	int count1 = cases.size() - 1;
 	for ( int x = 0 ; x < d.length ; x++ ) {
 	    for ( int y = d[x].length - 1 ; y >= 0 ; y-- ) {
-		if ( ! ((Briefcase)cases.get(count1)).isOpen() ) {
+		if ( ! ((Briefcase)cases.get(d[x][y])).isOpen() ) {
+		    // as long as the case is closed, it displays
 		    s += d[x][y] + "\t";
 		}
 		else {
+		    // if the case is open, the space is blank
 		    s += "\t";
 		}
-	        count1 -= 1;
 	    }
 	    s += "\n";
 	}
+
+	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 	
 	System.out.println(s);
     }
@@ -94,15 +96,12 @@ public class DealOrNoDeal {
     // time to play!
     public void play(){
 	
-	String t = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
-
-	System.out.println(t);
-
 	displayBoard();
+	
 	you.setYourCase();
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
 
-
+	displayBoard();
 
     }
 
