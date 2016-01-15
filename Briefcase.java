@@ -27,6 +27,11 @@ public class Briefcase {
 	return number;
     }
 
+    // accessor for value
+    public int getValue() {
+	return value;
+    }
+
     // mutator for value
     public void setValue(int x) {
 	value = x;
@@ -35,7 +40,7 @@ public class Briefcase {
 	return value;
     }
 
-    public void setOpen(boolean b){
+    public void setOpen(boolean b) {
 	open = b;
     }
     
