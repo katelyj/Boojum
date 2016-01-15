@@ -17,9 +17,12 @@ public class DealOrNoDeal {
     private int[] values = {1,5,10,15,25,50,75,
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
-
+    private final int[] finVals = {1,5,10,15,25,50,75,
+			    100,200,500,750,1000,5000,10000,25000,50000,75000,
+			    100000,200000,300000,400000,500000,750000,1000000};
     private InputStreamReader isr;
     private BufferedReader in;
+    private int phase;
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
@@ -42,6 +45,7 @@ public class DealOrNoDeal {
 	}
 	
 	you = new Player();
+	phase = 1;
     }
 
     
@@ -92,16 +96,64 @@ public class DealOrNoDeal {
 	
 	System.out.println(s);
     }
+    public void displayValues(){
+	System.out.println("remaining values:");
+	int ctr = 0;
+	while (ctr < 6){System.out.print(finVals[ctr] + "\t");ctr++;}
+	System.out.print("\n");
+	while (ctr < 12){System.out.print(finVals[ctr] + "\t");ctr++;}
+	System.out.print("\n");
+	while (ctr < 18){System.out.print(finVals[ctr] + "\t");ctr++;}
+	System.out.print("\n");
+	while (ctr < 24){System.out.print(finVals[ctr] + "\t");ctr++;}
+	System.out.print("\n");
+	
+    }
+    public void guess(){
+	isr = new InputStreamReader( System.in );
+	in = new BufferedReader( isr );
+	int choice = 0;
+	int ctr = 0;
+	if (phase == 1 || phase == 2){
+	    
+	    try {
+		if (ctr >= 6)return;
+		System.out.println(ctr);
+		System.out.println("You have " + (6 - ctr) + " briefcases to open!");		    		
+		System.out.println("pick a briefcase to open!");
+		choice = Integer.parseInt(in.readLine());
+		System.out.println("briefcase " + choice + " contains: " + 	((Briefcase)cases.get(choice)).getValue());		    
+		ctr++;
+	    }
+	    catch ( IndexOutOfBoundsException e){
+		System.out.println("\nThat number is not a briefcase!");
+	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
+	    catch ( IOException e ) {}	    	
+	}
+	else if (phase == 3 || phase == 4){}
+	else if (phase == 5 || phase == 6){}
+    }
+    public void deal(){}
 
+	
     // time to play!
     public void play(){
-	
+	int phase = 1;
 	displayBoard();
+	displayValues();
 	
 	you.setYourCase();
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
 
 	displayBoard();
+	for (int i = 0; i < 6; i++){
+	    guess();
+	    deal();
+	    phase ++;
+	}
 
     }
 

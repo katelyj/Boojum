@@ -31,6 +31,9 @@ public class Briefcase {
     public void setValue(int x) {
 	value = x;
     }
+    public int getValue() {
+	return value;
+    }
 
     public void setOpen(boolean b){
 	open = b;
