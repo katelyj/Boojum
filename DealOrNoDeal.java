@@ -132,7 +132,14 @@ public class DealOrNoDeal {
 	
 	System.out.println(s);
     }
-
+    public void waitSec(){
+	
+	try {
+	    Thread.sleep(1000);                 //1000 milliseconds is one second.
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+    }
     // goes through case choosing r times
     public void round(int r) {
 	int choice;
@@ -146,21 +153,20 @@ public class DealOrNoDeal {
 		b.setOpen(true); // sets briefcase to open
 		chosenValues.add(b.getValue()); // adds value to chosenValues
 		
-		System.out.println("\n*~~~~~~~~~~AMOUNT IN CASE: $" + b.getValue() + "!~~~~~~~~~~*");
+		System.out.println("\nAMOUNT IN CASE: ");
+		System.out.println("bum");
+		waitSec();
+		System.out.println("bum");
+		waitSec();
+		System.out.println("bum");
+		waitSec();
+		System.out.println("~~~~~~~~~~$" + b.getValue() + "!~~~~~~~~~~*");
 		r -= 1;
-		System.out.println("\nYou have " + r + " more briefcases to open!\n\nContinue? (press enter)\n");
-		
-		// prompt to have the user continue after viewing this information
-		try {
-		    in.readLine();
-		}
-		catch ( IOException e ) {}
-		System.out.println("\n------------------------------------------------------------------------");
-
+	
 		if ( r == 0 ) {
 		    return;
 		}
-		
+		waitSec();
 		displayBoard();
 	    }
 	}
