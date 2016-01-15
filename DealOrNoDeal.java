@@ -14,9 +14,10 @@ public class DealOrNoDeal {
     private Player you;
     private ArrayList cases;
     // make a final and copy version of this:
-    private int[] values = {1,5,10,15,25,50,75,
+    private final int[] fvalues = {1,5,10,15,25,50,75,
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
+    private int[] values;
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -27,6 +28,12 @@ public class DealOrNoDeal {
     public DealOrNoDeal() {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
+
+	// sets up values array
+	values = new int[fvalues.length];
+	for ( int x = 0 ; x < values.length ; x++ ) {
+	    values[x] = fvalues[x];
+	}
 
 	// sets up arrayList of briefcases
 	cases = new ArrayList<Briefcase>();
@@ -63,8 +70,12 @@ public class DealOrNoDeal {
     // displays the game board
     public void displayBoard() {
 	String s = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
+	s += "\t\tBRIEFCASES\n";
+        s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 
-	// puts values in a 2d array (makes it easier to display neatly later)
+	// the cases
+
+	// puts case numbers in a 2d array (makes it easier to display neatly later)
 	int[][] d = new int[4][cases.size()/4]; // 4 rows
 	int count = cases.size() - 1;
 	for ( int x = 0 ; x < d.length ; x++ ) {
@@ -89,6 +100,30 @@ public class DealOrNoDeal {
 	}
 
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
+
+	// the values
+
+	s += "\t\t$$$$$$$$\n";
+	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
+
+	// puts values in a 2d array (makes it easier to display neatly later)
+	int[][] t = new int[4][fvalues.length/4]; // 4 rows
+	int count1 = 0;
+	for ( int x = 0 ; x < t.length ; x++ ) {
+	    for ( int y = 0 ; y < t[x].length ; y++ ) {
+		t[x][y] = fvalues[count1];
+		count1 += 1;
+	    }
+	}
+
+	for ( int x = 0 ; x < t.length ; x++ ) {
+	    for ( int y = 0 ; y < t[x].length ; y++ ) {
+		s += t[x][y] + "\t";
+	    }
+	    s += "\n";
+	}
+
+	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 	
 	System.out.println(s);
     }
@@ -97,7 +132,8 @@ public class DealOrNoDeal {
     public void play(){
 	
 	displayBoard();
-	
+
+	// choosing your case
 	you.setYourCase();
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
 
