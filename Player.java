@@ -107,7 +107,7 @@ public class Player {
     // mutator for yourCase
     public void setYourCase() {
 	while ( yourCase < 0 || yourCase > 24 ) {
-	    System.out.println("Choose a case... \n");
+	    System.out.println("Choose a briefcase to be your own.\n Be wary. This case will stick with you throughout your time here...\n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
 	    }
