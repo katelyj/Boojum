@@ -134,7 +134,7 @@ public class DealOrNoDeal {
     }
     
     // waits one second
-    public void waitSec(){
+    public void waitSec() {
 	try {
 	    Thread.sleep(1000); //1000 milliseconds is one second.
 	} catch(InterruptedException ex) {
@@ -168,18 +168,18 @@ public class DealOrNoDeal {
 		System.out.println("\nYou have " + r + " more briefcases to open!\n");
 		waitSec();
 		System.out.println("----------------------------------------------------------------");
-	
-		if ( r == 0 ) {
-		    return;
-		}
 
 		displayBoard();
 	    }
 	}
     }
+
+    public void finalTwo() {
+	
+    }
     
     // time to play!
-    public void play(){
+    public void play() {
 	
 	displayBoard();
 
@@ -200,6 +200,8 @@ public class DealOrNoDeal {
 	//round(1);
 
 	//round(1);
+
+	//finalTwo();
 
     }
 

@@ -23,8 +23,8 @@ public class Player {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
 	name = inputName();
-	luck = 0.5;
-	likability = 0.5;
+	luck = 1;
+	likability = 1;
 	yourCase = -1;
 	System.out.println(inputMode());
 	
@@ -69,13 +69,13 @@ public class Player {
 	    return "\nCongrats, you are a regular person!\nNow let's begin...";
 	}
 	if ( n == 2 ) {
-	    setLuck(0.25);
-	    setLikability(0.75);
+	    setLuck(0.9);
+	    setLikability(1.1);
 	    return "\nCongrats, you are a likable person!\nNow let's begin...";
 	}
 	if ( n == 3 ) {
-	    setLuck(0.75);
-	    setLikability(0.25);
+	    setLuck(1.1);
+	    setLikability(0.9);
 	    return "\nCongrats, you are a lucky person!\nNow let's begin...";
 	}
 	else {
@@ -140,16 +140,6 @@ public class Player {
     // accessor for likeability
     public double getLikability() {
 	return likability;
-    }
-
-    // mutator for luck
-    public void setLuck(double i) {
-    	luck = i;
-    }
-
-    // mutator for likeability
-    public void setLikability(double i) {
-    	likability = i;
     }
 
 } // end class Player
