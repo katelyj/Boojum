@@ -138,10 +138,17 @@ public class DealOrNoDeal {
 	int choice;
 	while ( r != 0 ) {
 	    choice = you.pickCase(); // picks the case
-	    ((Briefcase)cases.get(choice)).setOpen(true); // sets briefcase to open
-	    chosenValues.add(((Briefcase)cases.get(choice)).getValue()); // adds value to chosenValues
-	    r -= 1;
-	    displayBoard();
+	    Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
+	    if ( b.isOpen() ) { // if already open
+		System.out.println("\nPlease choose a case not already chosen!\n");
+	    }
+	    else {
+		b.setOpen(true); // sets briefcase to open
+		chosenValues.add(b.getValue()); // adds value to chosenValues
+		System.out.println("\n*~~~~~~~~~~AMOUNT IN CASE: $" + b.getValue() + "!~~~~~~~~~~*");
+		r -= 1;
+		displayBoard();
+	    }
 	    
 	}
     }
@@ -158,6 +165,16 @@ public class DealOrNoDeal {
 	displayBoard();
 
 	round(6);
+
+	round(6);
+
+	round(4);
+
+	round(4);
+
+	round(1);
+
+	round(1);
 
     }
 

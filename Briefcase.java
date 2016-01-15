@@ -37,7 +37,7 @@ public class Briefcase {
 	value = x;
     }
 
-    public void setOpen(boolean b){
+    public void setOpen(boolean b) {
 	open = b;
     }
     
