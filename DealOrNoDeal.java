@@ -57,7 +57,7 @@ public class DealOrNoDeal {
     // shuffles the elements of values
     public void shuffleValues() {
 	int randomIndex;
-        for( int i = values.length - 1; i > 0 ; i-- ) {
+        for( int i = values.length - 1 ; i > 0 ; i-- ) {
 	    //pick an index at random
             randomIndex = (int)( (i+1) * Math.random() );
 	    //swap the values at position i and randomIndex
@@ -142,12 +142,25 @@ public class DealOrNoDeal {
 	    if ( b.isOpen() ) { // if already open
 		System.out.println("\nPlease choose a case not already chosen!\n");
 	    }
-	    else {		
+	    else {
 		b.setOpen(true); // sets briefcase to open
 		chosenValues.add(b.getValue()); // adds value to chosenValues
+		
 		System.out.println("\n*~~~~~~~~~~AMOUNT IN CASE: $" + b.getValue() + "!~~~~~~~~~~*");
 		r -= 1;
-		System.out.println("\nYou have " + r + " more briefcases to open!");
+		System.out.println("\nYou have " + r + " more briefcases to open!\n\nContinue? (press enter)\n");
+		
+		// prompt to have the user continue after viewing this information
+		try {
+		    in.readLine();
+		}
+		catch ( IOException e ) {}
+		System.out.println("\n------------------------------------------------------------------------");
+
+		if ( r == 0 ) {
+		    return;
+		}
+		
 		displayBoard();
 	    }
 	}
@@ -166,15 +179,15 @@ public class DealOrNoDeal {
 
 	round(6);
 
-	round(6);
+	//round(6);
 
-	round(4);
+	//round(4);
 
-	round(4);
+	//round(4);
 
-	round(1);
+	//round(1);
 
-	round(1);
+	//round(1);
 
     }
 
