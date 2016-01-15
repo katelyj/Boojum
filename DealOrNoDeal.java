@@ -142,20 +142,17 @@ public class DealOrNoDeal {
 	    if ( b.isOpen() ) { // if already open
 		System.out.println("\nPlease choose a case not already chosen!\n");
 	    }
-	    else {
-				
+	    else {		
 		b.setOpen(true); // sets briefcase to open
 		chosenValues.add(b.getValue()); // adds value to chosenValues
 		System.out.println("\n*~~~~~~~~~~AMOUNT IN CASE: $" + b.getValue() + "!~~~~~~~~~~*");
-		System.out.println("You have " +(r-1) + " briefcases to open!");
 		r -= 1;
+		System.out.println("\nYou have " + r + " more briefcases to open!");
 		displayBoard();
 	    }
-	    return;
-	    
 	}
     }
-
+    
     // time to play!
     public void play(){
 	
