@@ -14,4 +14,6 @@ RIP David Bowie.
 We worked on displaying the game board.
 We also made to-do.txt, a UML diagram, and a flowchart.
 In class, we worked on choosing your initial briefcase.
+At home, we worked on the progression of the same (choosing briefcases and all that fun stuff). 
+We now have a very basic layout of our game coded.
 RIP Alan Rickman.
