@@ -1,0 +1,13 @@
+Big to-dos:
+Make a dealer class and have the dealer make a deal after each round
+Write the end to the game: when you choose the deal, or one of the two last briefcases
+Write audience reactions (lol the best class obviously)
+
+Small to-dos:
+improve layout
+make a how-to-play thingy for new users
+nicer commentary
+
+Far in the future:
+cheats???
+optimization??????
