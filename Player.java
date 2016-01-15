@@ -85,10 +85,29 @@ public class Player {
 	
     }
 
+    // picking your case
+    public int pickCase() {
+	int c = -1;
+	while ( c < 0 || c > 24 ) {
+	    System.out.println("Pick a case to open...\n");
+	    try {
+		c = Integer.parseInt(in.readLine());
+	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
+	    catch ( IOException e ) {}
+	    if ( c < 0 || c > 24 ) {
+		System.out.println("\nPick a valid case, please.\n");
+	    }
+	}
+	return c;
+    }
+
     // mutator for yourCase
     public void setYourCase() {
 	while ( yourCase < 0 || yourCase > 24 ) {
-	    System.out.println("\nChoose a case... \n");
+	    System.out.println("Choose a case... \n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
 	    }
@@ -96,15 +115,17 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
+	    if ( yourCase < 0 || yourCase > 24 ) {
+		System.out.println("\nPick a valid case, please.\n");
+	    }
 	}
-	System.out.println("\nYour case is: " + yourCase + "!\n");
+	System.out.println("\nYour case is: " + yourCase + "!");
     }
        
     // accessor for case
     public int getYourCase(){
 	return yourCase;
     }
-
 
     // accessor for name
     public String getName() {

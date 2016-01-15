@@ -13,12 +13,11 @@ public class DealOrNoDeal {
 
     private Player you;
     private ArrayList cases;
-    // make a final and copy version of this:
+    private ArrayList chosenValues;
+    private int[] values;
     private final int[] fvalues = {1,5,10,15,25,50,75,
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
-    private int[] values;
-
     private InputStreamReader isr;
     private BufferedReader in;
 
@@ -28,6 +27,7 @@ public class DealOrNoDeal {
     public DealOrNoDeal() {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
+	chosenValues = new ArrayList<Integer>();
 
 	// sets up values array
 	values = new int[fvalues.length];
@@ -118,7 +118,12 @@ public class DealOrNoDeal {
 
 	for ( int x = 0 ; x < t.length ; x++ ) {
 	    for ( int y = 0 ; y < t[x].length ; y++ ) {
-		s += t[x][y] + "\t";
+		if ( ! chosenValues.contains(t[x][y]) ) { // if not already chosen, displays value
+		    s += t[x][y] + "\t";
+		}
+		else { // if already chosen, leaves space blank
+		    s += "\t";
+		}
 	    }
 	    s += "\n";
 	}
@@ -126,6 +131,19 @@ public class DealOrNoDeal {
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 	
 	System.out.println(s);
+    }
+
+    // goes through case choosing r times
+    public void round(int r) {
+	int choice;
+	while ( r != 0 ) {
+	    choice = you.pickCase(); // picks the case
+	    ((Briefcase)cases.get(choice)).setOpen(true); // sets briefcase to open
+	    chosenValues.add(((Briefcase)cases.get(choice)).getValue()); // adds value to chosenValues
+	    r -= 1;
+	    displayBoard();
+	    
+	}
     }
 
     // time to play!
@@ -138,6 +156,8 @@ public class DealOrNoDeal {
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
 
 	displayBoard();
+
+	round(6);
 
     }
 
