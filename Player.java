@@ -119,7 +119,6 @@ public class Player {
 		System.out.println("\nPick a valid case, please.\n");
 	    }
 	}
-	System.out.println("\nYour case is: " + yourCase + "!");
     }
        
     // accessor for case

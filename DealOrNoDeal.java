@@ -12,6 +12,7 @@ public class DealOrNoDeal {
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
 
     private Player you;
+    private Dealer banker;
     private ArrayList cases;
     private ArrayList chosenValues;
     private int[] values;
@@ -45,6 +46,7 @@ public class DealOrNoDeal {
 	}
 	
 	you = new Player();
+	banker = new Dealer(you.getLuck(),you.getLikability());
     }
 
     
@@ -125,6 +127,9 @@ public class DealOrNoDeal {
 	}
 
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
+	if ( you.getYourCase() != -1 ) {
+	    s += "\t\tYOUR CASE: " + you.getYourCase() + "\n";
+	}
 	
 	System.out.println(s);
     }
@@ -141,6 +146,16 @@ public class DealOrNoDeal {
     // goes through case choosing r times
     public void round(int r) {
 	int choice;
+        String s = "This round, you will be opening " + r + " case";
+	if ( r != 1 ) {
+	    s += "s.\n";
+	}
+	else {
+	    s += "\n";
+	}
+	System.out.println(s);
+	waitSec();
+	
 	while ( r != 0 ) {
 	    choice = you.pickCase(); // picks the case
 	    Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
@@ -159,6 +174,7 @@ public class DealOrNoDeal {
 		System.out.println("bum");
 		waitSec();
 		System.out.println("\n*~~~~~~~~~~$" + b.getValue() + "!~~~~~~~~~~*");
+		waitSec();
 
 		r -= 1;
 		System.out.println("\nYou have " + r + " more briefcases to open!\n");
@@ -218,15 +234,15 @@ public class DealOrNoDeal {
 
 	round(6);
 
-	//round(6);
+	round(6);
 
-	//round(4);
+	round(4);
 
-	//round(4);
+	round(4);
 
-	//round(1);
+	round(1);
 
-	//round(1);
+	round(1);
 
 	finalTwo();
 
