@@ -107,7 +107,7 @@ public class Player {
     // mutator for yourCase
     public void setYourCase() {
 	while ( yourCase < 0 || yourCase > 24 ) {
-	    System.out.println("Choose a briefcase to be your own.\n Be wary. This case will stick with you throughout your time here...\n");
+	    System.out.println("Choose a briefcase to be your own.\nBe wary. This case will stick with you throughout your time here...\n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
 	    }
@@ -140,6 +140,16 @@ public class Player {
     // accessor for likeability
     public double getLikability() {
 	return likability;
+    }
+
+    // mutator for luck
+    public void setLuck(double l) {
+	luck = l;
+    }
+    
+    // mutator for likability
+    public void setLikability(double l) {
+	likability = l;
     }
 
 } // end class Player

@@ -18,15 +18,11 @@ public class DealOrNoDeal {
     private final int[] fvalues = {1,5,10,15,25,50,75,
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
-    private InputStreamReader isr;
-    private BufferedReader in;
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
-	isr = new InputStreamReader( System.in );
-	in = new BufferedReader( isr );
 	chosenValues = new ArrayList<Integer>();
 
 	// sets up values array
@@ -136,7 +132,7 @@ public class DealOrNoDeal {
     // waits one second
     public void waitSec() {
 	try {
-	    Thread.sleep(1000); //1000 milliseconds is one second.
+	    Thread.sleep(1000); // 1000 milliseconds is one second
 	} catch(InterruptedException ex) {
 	    Thread.currentThread().interrupt();
 	}
@@ -167,7 +163,7 @@ public class DealOrNoDeal {
 		r -= 1;
 		System.out.println("\nYou have " + r + " more briefcases to open!\n");
 		waitSec();
-		System.out.println("----------------------------------------------------------------");
+		System.out.println("--------------------------------------------------------------------------");
 
 		displayBoard();
 	    }
@@ -176,7 +172,37 @@ public class DealOrNoDeal {
 
     // the dramatic conclusion...
     public void finalTwo() {
+	int choice;
+
+	System.out.println("Only two briefcases remain.\n");
+	waitSec();
+	System.out.println("Will you choose to open your own case (case " + you.getYourCase() + "), or the one remaining on the board?\n");
+	waitSec();
+	System.out.println("Choose wisely. The amount in the case you choose will contain the amount of money you win.\n");
+	waitSec();
 	
+	choice = you.pickCase(); // picks the case
+
+	Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
+	if ( b.isOpen() && choice != you.getYourCase() ) {
+	    System.out.println("\nUmm... Pick a valid case, please.\nLet's start this over...\n");
+	    waitSec();
+	    finalTwo();
+	}
+	else {
+	    System.out.println("\n--------------------------------------------------------------------------");
+	    System.out.println("\nAnd the amount in the case is...\n");
+	    System.out.println("bum");
+	    waitSec();
+	    System.out.println("bum");
+	    waitSec();
+	    System.out.println("bum");
+	    waitSec();
+	    System.out.println("\n*~~~~~~~~~~$" + b.getValue() + "!!!!!~~~~~~~~~~*");
+	    waitSec();
+	    System.out.println("\nThanks for playing!\n");
+	    System.out.println("--------------------------------------------------------------------------");
+	}
     }
     
     // time to play!
@@ -202,7 +228,7 @@ public class DealOrNoDeal {
 
 	//round(1);
 
-	//finalTwo();
+	finalTwo();
 
     }
 
