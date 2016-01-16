@@ -115,9 +115,32 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
-	    if ( yourCase < 0 || yourCase > 24 ) {
+	    if ( yourCase < 0 || yourCase > 23 ) {
 		System.out.println("\nPick a valid case, please.\n");
 	    }
+	}
+    }
+
+    // allows the user to choose to make the deal or not
+    public String dealOrNoDeal() {
+	String n = "";
+	System.out.println("\nDeal, or no deal?\n(all lower case please)\n");
+	
+	try {
+	    n = in.readLine();
+	}
+	catch ( IOException e ) {}
+
+	if ( n.equals("deal") ) {
+	    return n;
+	}
+	else if ( n.equals("no deal") ) {
+	    System.out.println("\nAnd the game continues on!\n");
+	    return n;
+	}
+	else {
+	    System.out.println("\nUhh... let's try that again, shall we?\n");
+	    return dealOrNoDeal();
 	}
     }
        

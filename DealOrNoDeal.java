@@ -13,17 +13,20 @@ public class DealOrNoDeal {
 
     private Player you;
     private Dealer banker;
+    private boolean dealMade;
     private ArrayList cases;
     private ArrayList chosenValues;
     private int[] values;
     private final int[] fvalues = {1,5,10,15,25,50,75,
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
+    private final int[] roundOrder = {6,6,4,4,1,1,-1}; // -1 indicates round for final 2 cases
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
+	dealMade = false;
 	chosenValues = new ArrayList<Integer>();
 
 	// sets up values array
@@ -145,6 +148,11 @@ public class DealOrNoDeal {
 
     // goes through case choosing r times
     public void round(int r) {
+	if ( r == -1 ) { // the thrilling conclusion
+	    finalTwo();
+	    return;
+	}
+	
 	int choice;
         String s = "This round, you will be opening " + r + " case";
 	if ( r != 1 ) {
@@ -220,31 +228,48 @@ public class DealOrNoDeal {
 	    System.out.println("--------------------------------------------------------------------------");
 	}
     }
+
+    // the banker's time to shine!
+    public void deal() {
+	System.out.println("It's time for a deal.\n");
+	waitSec();
+	System.out.println("Please wait while the banker is calculating...\n");
+	System.out.println("...");
+	waitSec();
+	System.out.println("...");
+	waitSec();
+	System.out.println("...");
+	waitSec();
+	int d = banker.deal(chosenValues,values);
+	System.out.println("\nBANKER'S OFFER: " + d + "!");
+	waitSec();
+	
+	if ( you.dealOrNoDeal().equals("deal") ) {
+	    dealMade = true;
+	    System.out.println("--------------------------------------------------------------------------");
+	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + d + "!!!!!!!");
+	    System.out.println("\nThanks for playing!\n");
+	}
+	
+	System.out.println("--------------------------------------------------------------------------\n");
+    }
     
     // time to play!
     public void play() {
-	
-	displayBoard();
 
 	// choosing your case
+	displayBoard();
 	you.setYourCase();
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
-
 	displayBoard();
 
-	round(6);
-
-	round(6);
-
-	round(4);
-
-	round(4);
-
-	round(1);
-
-	round(1);
-
-	finalTwo();
+	// round time!
+	for ( int r : roundOrder ) {
+	    if ( ! dealMade ) {
+		round(r);
+		deal();
+	    }
+	}
 
     }
 
