@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class Dealer {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-
     private double luck;
     private int totVals;
+    private int totBrief;
     private int leftVals;
     private int choVals;
 
@@ -25,7 +25,7 @@ public class Dealer {
 
     // sets the values of totVals, leftVals, and choVals
     public void setVals(ArrayList c, int[] v) {
-    	totVals = v.length - c.size(); // number of briefcasees that are still closed
+    	totBrief = v.length - c.size(); // number of briefcasees that are still closed
 	
 	for ( int i = 0 ; i < c.size() ; i++ ) {
 	    choVals += (int)c.get(i); // sum of all of the open briefcases
@@ -38,10 +38,11 @@ public class Dealer {
 	leftVals = totVals - choVals;
     }
 
+
     // returns the deal delt by the dealer
     public int deal(ArrayList chosenValues, int[] values) {
 	setVals(chosenValues,values); // sets values properly
-	int mean = leftVals / totVals; // average of totVals in briefcases not opened
+	int mean = leftVals / totBrief; // average of totVals in briefcases not opened
 	return (int)luck * mean; // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
     }
     

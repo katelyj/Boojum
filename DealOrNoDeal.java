@@ -13,6 +13,7 @@ public class DealOrNoDeal {
 
     private Player you;
     private Dealer banker;
+    private CaseHolders caseholder;
     private boolean dealMade;
     private ArrayList cases;
     private ArrayList chosenValues;
@@ -21,6 +22,7 @@ public class DealOrNoDeal {
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
     private final int[] roundOrder = {6,6,4,4,1,1,-1}; // -1 indicates round for final 2 cases
+    private int briefValue; //only for caeholder's use
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
@@ -194,6 +196,10 @@ public class DealOrNoDeal {
 		System.out.println("bum");
 		waitSec();
 		System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!~~~~~~~~~~*");
+		waitSec();
+		caseholder = new CaseHolders(b.getValue(), you.getLikability());
+		String response = caseholder.response();	
+		System.out.println("\n---------" + response + "----------");
 		waitSec();
 
 		r -= 1;

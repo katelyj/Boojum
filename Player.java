@@ -12,7 +12,7 @@ public class Player {
     private String name;
     private int yourCase;
     private double luck;
-    private double likability;
+    private String likability;
     private InputStreamReader isr;
     private BufferedReader in;
 
@@ -24,7 +24,7 @@ public class Player {
 	in = new BufferedReader( isr );
 	name = inputName();
 	luck = 1;
-	likability = 1;
+	likability = "neither";
 	yourCase = -1;
 	System.out.println(inputMode());
 	
@@ -43,6 +43,7 @@ public class Player {
 	    }
 	    catch ( IOException e ) {}
 	}
+	System.out.println("\nHello, " + n + ", welcome to Deal Or No Deal!!!");
 	return n;
     }
     
@@ -70,12 +71,12 @@ public class Player {
 	}
 	if ( n == 2 ) {
 	    setLuck(0.9);
-	    setLikability(1.1);
+	    setLikability("true");
 	    return "\nCongrats, you are a likable person!\nNow let's begin...";
 	}
 	if ( n == 3 ) {
 	    setLuck(1.1);
-	    setLikability(0.9);
+	    setLikability("false");
 	    return "\nCongrats, you are a lucky person!\nNow let's begin...";
 	}
 	else {
@@ -124,7 +125,7 @@ public class Player {
     // allows the user to choose to make the deal or not
     public String dealOrNoDeal() {
 	String n = "";
-	System.out.println("\nDeal, or no deal?\n(all lower case please)\n");
+	System.out.println("\ndeal, or no deal?\n(all lower case please)\n");
 	
 	try {
 	    n = in.readLine();
@@ -160,7 +161,7 @@ public class Player {
     }
 
     // accessor for likeability
-    public double getLikability() {
+    public String getLikability() {
 	return likability;
     }
 
@@ -170,7 +171,7 @@ public class Player {
     }
     
     // mutator for likability
-    public void setLikability(double l) {
+    public void setLikability(String l) {
 	likability = l;
     }
 
