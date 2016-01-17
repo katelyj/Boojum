@@ -14,7 +14,7 @@ public class DealOrNoDeal {
     private Player you;
     private Dealer banker;
     private CaseHolders caseholder;
-    private boolean dealMade;
+    private boolean gameOver;
     private ArrayList cases;
     private ArrayList chosenValues;
     private int[] values;
@@ -22,13 +22,12 @@ public class DealOrNoDeal {
 			    100,200,500,750,1000,5000,10000,25000,50000,75000,
 			    100000,200000,300000,400000,500000,750000,1000000};
     private final int[] roundOrder = {6,6,4,4,1,1,-1}; // -1 indicates round for final 2 cases
-    private int briefValue; //only for caeholder's use
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
-	dealMade = false;
+	gameOver = false;
 	chosenValues = new ArrayList<Integer>();
 
 	// sets up values array
@@ -52,6 +51,7 @@ public class DealOrNoDeal {
 	
 	you = new Player();
 	banker = new Dealer(you.getLuck());
+	caseholder = new CaseHolders(you.getLikability());
     }
 
     
@@ -163,6 +163,7 @@ public class DealOrNoDeal {
     // goes through case choosing r times
     public void round(int r) {
 	if ( r == -1 ) { // the thrilling conclusion
+	    gameOver = true;
 	    finalTwo();
 	    return;
 	}
@@ -197,9 +198,9 @@ public class DealOrNoDeal {
 		waitSec();
 		System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!~~~~~~~~~~*");
 		waitSec();
-		caseholder = new CaseHolders(b.getValue(), you.getLikability());
-		String response = caseholder.response();	
-		System.out.println("\n---------" + response + "----------");
+		
+		String response = caseholder.response(b.getValue());	
+		System.out.println("\n" + response);
 		waitSec();
 
 		r -= 1;
@@ -263,7 +264,7 @@ public class DealOrNoDeal {
 	waitSec();
 	
 	if ( you.dealOrNoDeal().equals("deal") ) {
-	    dealMade = true;
+	    gameOver = true;
 	    System.out.println("--------------------------------------------------------------------------");
 	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(d) + "!!!!!!!");
 	    System.out.println("\nThanks for playing!\n");
@@ -282,9 +283,10 @@ public class DealOrNoDeal {
 
 	// round time!
 	for ( int r : roundOrder ) {
-	    if ( ! dealMade ) {
+	    if ( ! gameOver ) {
 		displayBoard();
-		round(r);
+		round(r); }
+	    if ( ! gameOver ) { // so deal() won't happen if the player completes finalTwo()
 		deal();
 	    }
 	}
@@ -302,4 +304,4 @@ public class DealOrNoDeal {
 
     }
 
-} //end class DealOrNoDeal
+} // end class DealOrNoDeal
