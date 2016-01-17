@@ -23,10 +23,15 @@ public class CaseHolders {
 
     public String response(){
 	if (likability.equals("true")){
-	    if (brief > 1000){
+	    if (brief > 50000){
 		double prob = Math.random();
 		int pos = (int)(prob * likes.length);
 		return likes[pos];
+	    }
+	    else if (brief > 500){
+		double prob = Math.random();
+		int pos = (int)(prob * regResponse.length);
+		return regResponse[pos];
 	    }
 	    else {
 		double prob = Math.random();
@@ -35,10 +40,15 @@ public class CaseHolders {
 	    }
 	}
 	else if (likability.equals("false")){
-	    if (brief > 1000){
+	    if (brief > 50000){
 		double prob = Math.random();
 		int pos = (int)(prob * negResponse.length);
 		return negResponse[pos];
+	    }
+	    else if (brief > 500){
+		double prob = Math.random();
+		int pos = (int)(prob * regResponse.length);
+		return regResponse[pos];
 	    }
 	    else {
 		double prob = Math.random();
@@ -47,10 +57,15 @@ public class CaseHolders {
 	    }
 	}
 	else {	    
-	    if (brief > 1000){
+	    if (brief > 50000){
 		double prob = Math.random();
 		int pos = (int)(prob * negResponse.length);
 		return negResponse[pos];
+	    }
+	    else if (brief > 500){
+		double prob = Math.random();
+		int pos = (int)(prob * regResponse.length);
+		return regResponse[pos];
 	    }
 	    else {
 		double prob = Math.random();

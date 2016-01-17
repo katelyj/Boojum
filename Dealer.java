@@ -32,10 +32,10 @@ public class Dealer {
 	for ( int i = 0 ; i < c.size() ; i++ ) {
 	    choVals += (int)c.get(i); // sum of all of the open briefcases
 	}
-	System.out.println(choVals);
 	for ( int i = 0 ; i < v.length ; i++ ) {
 	    totVals += v[i]; // sum of all of the values (ever)
 	}
+	leftVals = totVals - choVals;
 	
         // difference between values that were opened and all the values, leaving you with only the values of briefcases that weren't opened
     }
