@@ -27,5 +27,7 @@ Next up to work on is class CaseHolder, and then possibly the superclass for all
 Kate worked on printing the numbers with their proper commas.
 
 2016-01-16/17
-Bayle created the CaseHolders and their helpful responses and she implemented it in the driver class so that after each case opening, there would be a response. Also, before the dealer was only offering $0, Bayle set him/her straight.
+Bayle created the CaseHolders and their helpful responses and she implemented it in the driver class so that after each case opening, there would be a response. 
+Also, before the dealer was only offering $0; Bayle set them straight.
+Kate edited CaseHolders and expanded it more, adding more possibilities for responses and changing minor algorithmic things.
 

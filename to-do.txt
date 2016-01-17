@@ -1,9 +1,5 @@
-Big to-dos:
-write audience reactions (lol the best class obviously)
+Immediate:
 character superclass
-
-Small to-dos:
-improve layout
 make a how-to-play thingy for new users
 
 Far in the future:
