@@ -258,7 +258,7 @@ public class DealOrNoDeal {
 	waitSec();
 	System.out.println("...");
 	waitSec();
-	int d = banker.deal(chosenValues,values);
+	int d = banker.deal(chosenValues,fvalues);
 	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
 	waitSec();
 	

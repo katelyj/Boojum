@@ -25,17 +25,19 @@ public class Dealer {
 
     // sets the values of totVals, leftVals, and choVals
     public void setVals(ArrayList c, int[] v) {
+	choVals = 0;
+	totVals = 0;
     	totBrief = v.length - c.size(); // number of briefcasees that are still closed
 	
 	for ( int i = 0 ; i < c.size() ; i++ ) {
 	    choVals += (int)c.get(i); // sum of all of the open briefcases
 	}
+	System.out.println(choVals);
 	for ( int i = 0 ; i < v.length ; i++ ) {
 	    totVals += v[i]; // sum of all of the values (ever)
 	}
 	
         // difference between values that were opened and all the values, leaving you with only the values of briefcases that weren't opened
-	leftVals = totVals - choVals;
     }
 
 
@@ -43,7 +45,7 @@ public class Dealer {
     public int deal(ArrayList chosenValues, int[] values) {
 	setVals(chosenValues,values); // sets values properly
 	int mean = leftVals / totBrief; // average of totVals in briefcases not opened
-	return (int)luck * mean; // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
+	return (int)(luck * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
     }
     
 } // end class Dealer
