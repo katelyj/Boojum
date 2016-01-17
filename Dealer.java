@@ -8,7 +8,6 @@ public class Dealer {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
 
-    private double likability;
     private double luck;
     private int totVals;
     private int leftVals;
@@ -17,9 +16,8 @@ public class Dealer {
 
      // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
-    public Dealer (double luc, double like) {
-	luck = luc;
-	likability = like;
+    public Dealer (double l) {
+	luck = l;
     }
 
     

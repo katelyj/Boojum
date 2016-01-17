@@ -1,7 +1,6 @@
 Big to-dos:
 write audience reactions (lol the best class obviously)
 character superclass
-change int[] values to String[] values so we can add commas to numbers (for clarity)
 
 Small to-dos:
 improve layout

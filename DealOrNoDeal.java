@@ -49,7 +49,7 @@ public class DealOrNoDeal {
 	}
 	
 	you = new Player();
-	banker = new Dealer(you.getLuck(),you.getLikability());
+	banker = new Dealer(you.getLuck());
     }
 
     
@@ -120,7 +120,7 @@ public class DealOrNoDeal {
 	for ( int x = 0 ; x < t.length ; x++ ) {
 	    for ( int y = 0 ; y < t[x].length ; y++ ) {
 		if ( ! chosenValues.contains(t[x][y]) ) { // if not already chosen, displays value
-		    s += t[x][y] + "\t";
+		    s += commafy(t[x][y]) + "\t";
 		}
 		else { // if already chosen, leaves space blank
 		    s += "\t";
@@ -135,6 +135,18 @@ public class DealOrNoDeal {
 	}
 	
 	System.out.println(s);
+    }
+
+    // puts commas in appropriate place when printing numbers
+    public static String commafy(int i) {
+	String s = "" + i;
+	if ( s.length() < 4 ){
+	    return s;
+	}
+	else {
+	    return commafy(Integer.parseInt(s.substring(0, s.length() - 3))) + "," +         
+		s.substring(s.length() - 3, s.length());
+	}
     }
     
     // waits one second
@@ -181,7 +193,7 @@ public class DealOrNoDeal {
 		waitSec();
 		System.out.println("bum");
 		waitSec();
-		System.out.println("\n*~~~~~~~~~~$" + b.getValue() + "!~~~~~~~~~~*");
+		System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!~~~~~~~~~~*");
 		waitSec();
 
 		r -= 1;
@@ -222,7 +234,7 @@ public class DealOrNoDeal {
 	    waitSec();
 	    System.out.println("bum");
 	    waitSec();
-	    System.out.println("\n*~~~~~~~~~~$" + b.getValue() + "!!!!!~~~~~~~~~~*");
+	    System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!!!!!~~~~~~~~~~*");
 	    waitSec();
 	    System.out.println("\nThanks for playing!\n");
 	    System.out.println("--------------------------------------------------------------------------");
@@ -241,13 +253,13 @@ public class DealOrNoDeal {
 	System.out.println("...");
 	waitSec();
 	int d = banker.deal(chosenValues,values);
-	System.out.println("\nBANKER'S OFFER: " + d + "!");
+	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
 	waitSec();
 	
 	if ( you.dealOrNoDeal().equals("deal") ) {
 	    dealMade = true;
 	    System.out.println("--------------------------------------------------------------------------");
-	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + d + "!!!!!!!");
+	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(d) + "!!!!!!!");
 	    System.out.println("\nThanks for playing!\n");
 	}
 	
@@ -261,11 +273,11 @@ public class DealOrNoDeal {
 	displayBoard();
 	you.setYourCase();
 	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
-	displayBoard();
 
 	// round time!
 	for ( int r : roundOrder ) {
 	    if ( ! dealMade ) {
+		displayBoard();
 		round(r);
 		deal();
 	    }
