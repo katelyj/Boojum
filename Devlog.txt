@@ -1,6 +1,6 @@
 Kate and Bayle's Devlog
 
-2016-01-13 Kate
+2016-01-13
 Today was the start of our project devlog.
 After Kate had her vision that came to her in a dream, we discussed our new project plan, drawing diagrams and flowcharts and all of that neat stuff.
 Then, after getting Mr. Brown's seal of approval, we began to make the basic structures for our classes.
@@ -31,3 +31,6 @@ Bayle created the CaseHolders and their helpful responses and she implemented it
 Also, before the dealer was only offering $0; Bayle set them straight.
 Kate edited CaseHolders and expanded it more, adding more possibilities for responses and changing minor algorithmic things.
 
+
+2016-01-19
+In class, Kate created the (very simple) driver file, for the sake of clenliness.

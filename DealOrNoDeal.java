@@ -1,6 +1,6 @@
 /*=============================================
-  class DealOrNoDeal -- Driver file for Kate and Bayle's FINAL PROJECT!
-  Required classes: Player, Banker, Caseholder, Briefcase
+  class DealOrNoDeal -- The main functionality of the game!
+  Required classes: Player, Dealer, Caseholders, Briefcase
   =============================================*/
 
 import java.io.*;
@@ -290,17 +290,6 @@ public class DealOrNoDeal {
 		deal();
 	    }
 	}
-
-    }
-
-
-    // ~~~~~~~~~~~ MAIN METHOD ~~~~~~~~~~~
-
-    public static void main( String[] args ) {
-
-        DealOrNoDeal game = new DealOrNoDeal();
-	
-	game.play();
 
     }
 

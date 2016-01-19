@@ -1,5 +1,5 @@
 Immediate:
-character superclass
+
 make a how-to-play thingy for new users
 
 Far in the future:
