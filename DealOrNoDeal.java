@@ -3,8 +3,6 @@
   Required classes: Player, Dealer, Caseholders, Briefcase
   =============================================*/
 
-import java.io.*;
-import java.util.*;
 import java.util.ArrayList;
 
 public class DealOrNoDeal {
@@ -55,7 +53,7 @@ public class DealOrNoDeal {
     }
 
     
-    // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
+    // ~~~~~~~~~~~ METHODS -- HELPER ~~~~~~~~~~~
 
     // shuffles the elements of values
     public void shuffleValues() {
@@ -159,6 +157,8 @@ public class DealOrNoDeal {
 	    Thread.currentThread().interrupt();
 	}
     }
+
+    // ~~~~~~~~~~~ METHODS -- GAMEPLAY ~~~~~~~~~~~
 
     // goes through case choosing r times
     public void round(int r) {
@@ -275,6 +275,9 @@ public class DealOrNoDeal {
     
     // time to play!
     public void play() {
+
+	// for new players
+	you.rules();
 
 	// choosing your case
 	displayBoard();

@@ -77,13 +77,34 @@ public class Player {
 	if ( n == 3 ) {
 	    setLuck(1.1);
 	    setLikability(-1);
-	    return "\nCongrats, you are a lucky person!\nNow let's begin...";
+	    return "\nCongrats, you are a lucky person!";
 	}
 	else {
 	    System.out.println("\nUm, no.");
 	    return inputMode();
 	}
 	
+    }
+
+    // for new players who don't know what's up
+    public void rules() {
+	String b = "";
+	System.out.println("Before we begin, do you know how to play? (yes/no)\n");
+	while ( (! b.equals("yes")) || (! b.equals("no")) ) {
+	    try {
+		b = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+	    if ( (! b.equals("yes")) || (! b.equals("no")) ) {
+		System.out.println("\nPlease choose yes or no!\n");
+	    }
+	}
+	if ( b.equals("yes") ) {
+	    System.out.println("RULES");
+	}
+	else {
+	    System.out.println("\nGreat! Now let's begin...");
+	}
     }
 
     // picking your case
