@@ -15,6 +15,7 @@ public class Player {
     private int likability;
     private InputStreamReader isr;
     private BufferedReader in;
+    private final String rules = "\nTHE RULES:\n\nIn this game, there are 24 briefcases filled with money, ranging from $1 to $1,000,000. Without knowing the amounts inside, you will choose a briefcase to be your own. This briefcase will stick with you throughout the game, and at the end, you will win whatever is inside of it.\n\nEach round, you will open a designated number of briefcases, revealing the amounts of money they have inside. This will give you a clue as to what is NOT in your own briefcase. And at the end of each round, you will be presented a certain amount of money: a deal. You can either make the deal and take this money, ending the game and never knowing how much was in your case, or reject the deal and keep opening more briefcases.\n\nIf you get to the end without making a deal, you will win whatever amount is in your own briefcase.\n\nNow, press enter to begin...\n";
 
 
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
@@ -67,17 +68,17 @@ public class Player {
 	}
 	
 	if ( n == 1 ) {
-	    return "\nCongrats, you are a regular person!\nNow let's begin...";
+	    return "\nCongrats, you are a regular person!\n";
 	}
 	if ( n == 2 ) {
 	    setLuck(0.9);
 	    setLikability(1);
-	    return "\nCongrats, you are a likable person!\nNow let's begin...";
+	    return "\nCongrats, you are a likable person!\n";
 	}
 	if ( n == 3 ) {
 	    setLuck(1.1);
 	    setLikability(-1);
-	    return "\nCongrats, you are a lucky person!";
+	    return "\nCongrats, you are a lucky person!\n";
 	}
 	else {
 	    System.out.println("\nUm, no.");
@@ -90,17 +91,19 @@ public class Player {
     public void rules() {
 	String b = "";
 	System.out.println("Before we begin, do you know how to play? (yes/no)\n");
-	while ( (! b.equals("yes")) || (! b.equals("no")) ) {
+	while ( (! b.equals("yes")) && (! b.equals("no")) ) {
 	    try {
 		b = in.readLine();
 	    }
 	    catch ( IOException e ) {}
-	    if ( (! b.equals("yes")) || (! b.equals("no")) ) {
+	    if ( (! b.equals("yes")) && (! b.equals("no")) ) {
 		System.out.println("\nPlease choose yes or no!\n");
 	    }
 	}
-	if ( b.equals("yes") ) {
-	    System.out.println("RULES");
+	if ( b.equals("no") ) {
+	    System.out.println(rules);
+	    try { in.readLine(); }
+	    catch ( IOException e ) {}
 	}
 	else {
 	    System.out.println("\nGreat! Now let's begin...");
