@@ -1,1 +1,2 @@
 optimization??????
+make values an arrayList

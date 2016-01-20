@@ -17,6 +17,7 @@ public class DealOrNoDeal {
     private Dealer banker;
     private CaseHolders caseholder;
     private boolean gameOver;
+    private int finalAmount;
     private ArrayList cases;
     private ArrayList chosenValues;
     private int[] values;
@@ -32,6 +33,7 @@ public class DealOrNoDeal {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
 	gameOver = false;
+	finalAmount = 0;
 	chosenValues = new ArrayList<Integer>();
 
 	// sets up values array
@@ -164,12 +166,21 @@ public class DealOrNoDeal {
 	}
     }
 
+    // returns if a number is a valid amount in our game of Deal Or No Deal (aka if it's in the instance variable values)
+    public boolean isValue(int amount) {
+	for ( int v : values ) {
+	    if ( amount == v ) {
+		return true;
+	    }
+	}
+	return false;
+    }
+
     // ~~~~~~~~~~~ METHODS -- GAMEPLAY ~~~~~~~~~~~
 
     // goes through case choosing r times
     public void round(int r) {
 	if ( r == -1 ) { // the thrilling conclusion
-	    gameOver = true;
 	    finalTwo();
 	    return;
 	}
@@ -180,7 +191,7 @@ public class DealOrNoDeal {
 	    s += "s.\n";
 	}
 	else {
-	    s += "\n";
+	    s += ".\n";
 	}
 	System.out.println(s);
 	waitSec();
@@ -193,7 +204,10 @@ public class DealOrNoDeal {
 	    }
 	    else {
 		b.setOpen(true); // sets briefcase to open
-		chosenValues.add(b.getValue()); // adds value to chosenValues
+		int val = b.getValue();
+		chosenValues.add(val); // adds value to chosenValues
+
+		fiveHunna(val); // guess the value before showing what it is
 		
 		System.out.println("\nAMOUNT IN CASE: \n");
 		System.out.println("bum");
@@ -202,10 +216,10 @@ public class DealOrNoDeal {
 		waitSec();
 		System.out.println("bum");
 		waitSec();
-		System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!~~~~~~~~~~*");
+		System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!~~~~~~~~~~*");
 		waitSec();
 		
-		String response = caseholder.response(b.getValue());	
+		String response = caseholder.response(val);	
 		System.out.println("\n" + response);
 		waitSec();
 
@@ -239,6 +253,7 @@ public class DealOrNoDeal {
 	    finalTwo();
 	}
 	else {
+	    finalAmount += b.getValue();
 	    System.out.println("\n--------------------------------------------------------------------------");
 	    System.out.println("\nAnd the amount in the case is...\n");
 	    System.out.println("bum");
@@ -247,9 +262,9 @@ public class DealOrNoDeal {
 	    waitSec();
 	    System.out.println("bum");
 	    waitSec();
-	    System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!!!!!~~~~~~~~~~*");
+	    System.out.println("\n*~~~~~~~~~~$" + commafy(finalAmount) + "!!!!!~~~~~~~~~~*");
 	    waitSec();
-	    end(b.getValue());
+	    end();
 	    System.out.println("--------------------------------------------------------------------------");
 	}
     }
@@ -270,15 +285,15 @@ public class DealOrNoDeal {
 	waitSec();
 	
 	if ( you.dealOrNoDeal().equals("deal") ) {
-	    gameOver = true;
-	    end(d);
+	    finalAmount += d;
+	    end();
 	}
 	
 	System.out.println("--------------------------------------------------------------------------\n");
     }
     
     // gives the player yet another chance to test their luck at the very end of the game
-    public int box24(int m) {
+    public void box24() {
 	System.out.println("\n--------------------------------------------------------------------------\n");
 	System.out.println("A quick detour...\n");
 	System.out.println("--------------------------------------------------------------------------\n");
@@ -286,7 +301,7 @@ public class DealOrNoDeal {
 
 	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
 		
-	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(m)+ " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
+	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(finalAmount)+ " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
 	    try {
 		ans = in.readLine();
 	    }
@@ -309,22 +324,22 @@ public class DealOrNoDeal {
 	    double prob = Math.random();
 	    if ( prob > .8 ) { // user has won double their money
 		System.out.println("\nYOU JUST WON DOUBLE YOUR MONEY!!!!! CONGRATULATIONS!\n");
-	        m *= 2;
+	        finalAmount *= 2;
 	    }
 	    else if ( prob > .6 ) { // user has won an additional $10,000
 		System.out.println("\nYOU JUST WON AN ADDITIONAL $10,000!!!!! CONGRATS, MAN!\n");
-		m += 10000;
+		finalAmount += 10000;
 	    }
 	    else if ( prob > .4 ) { // user just gets their original amount
 		System.out.println("\nYou get the same amount! Nothing has changed.\n");
 	    }
 	    else if ( prob > .2 ) { // user loses half their money
 		System.out.println("\nD'OH! You just lost half your money! Ouch...\n");
-		m /= 2;
+		finalAmount /= 2;
 	    }
 	    else { // user loses everything
 		System.out.println("\nOh, man! You lost everything! Too bad. Play smarter next time!\n");
-	        m = 0;
+	        finalAmount = 0;
 	    }
 	}
 	
@@ -334,14 +349,64 @@ public class DealOrNoDeal {
 	}
 
 	waitSec();
-	return m;
+    }
+
+    // guess what's in the case to win (or lose) $500!
+    public void fiveHunna(int amount) {
+	System.out.println("\nBefore we show you what's in the case... \nwould you like to guess what it contains?");
+	String ans = "";
+	
+	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+	    System.out.println("\n(yes/no)\n");
+	    try {
+		ans = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+	}
+
+	if ( ans.equals("yes") ) { // the player is taking a chance!
+	    int guess = 0;
+	    
+	    while ( guess == 0 ) {
+		System.out.println("\nGo ahead! Take a guess!\n");
+		try {
+		    System.out.print("$");
+		    guess = Integer.parseInt(in.readLine());
+		}
+		catch ( NumberFormatException e ) {
+		    System.out.println("\nThat's not okay.");
+		}
+		catch ( IOException e ) {}
+
+		if ( (! isValue(guess)) || (chosenValues.contains(guess)) ) {
+		    System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
+		    guess = 0;
+		}
+	    }
+
+	    if ( guess == amount ) { // guess is correct
+		System.out.println("\nSomehow, that is correct! \n$500 has been added to your final balance. Great job!\n");
+		finalAmount += 500;
+	    }
+	    else { // guess is incorrect
+		System.out.println("\nSorry, but that is incorrect. \n$500 has been subtracted from your final balance. Better luck next time!");
+		finalAmount -= 500;
+	    }
+	}
+	
+	else { // the player is a dud
+	    System.out.println("\nWhimp.");
+	}
+
+	waitSec();
     }
 
     // the true end of the game
-    public void end(int m) {
-	m = box24(m);
+    public void end() {
+	box24();
+	gameOver = true;
 	System.out.println("--------------------------------------------------------------------------");
-	System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(m) + "!!!!!!!");
+	System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(finalAmount) + "!!!!!!!");
 	System.out.println("\nThanks for playing!\n");
     }
     
@@ -360,9 +425,10 @@ public class DealOrNoDeal {
 	for ( int r : roundOrder ) {
 	    if ( ! gameOver ) {
 		displayBoard();
-		round(r); }
-	    if ( ! gameOver ) { // so deal() won't happen if the player has the finalTwo() round
-		deal();
+		round(r);
+		if ( r != -1 ) { // so a deal will not happen in the final round
+		    deal();
+		}
 	    }
 	}
 
