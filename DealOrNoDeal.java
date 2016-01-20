@@ -3,12 +3,15 @@
   Required classes: Player, Dealer, Caseholders, Briefcase
   =============================================*/
 
+import java.io.*;
+import java.util.*;
 import java.util.ArrayList;
 
 public class DealOrNoDeal {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-
+    private InputStreamReader isr;
+    private BufferedReader in;
     private Player you;
     private Dealer banker;
     private CaseHolders caseholder;
@@ -25,6 +28,8 @@ public class DealOrNoDeal {
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
+	isr = new InputStreamReader( System.in );
+	in = new BufferedReader( isr );
 	gameOver = false;
 	chosenValues = new ArrayList<Integer>();
 
@@ -149,10 +154,10 @@ public class DealOrNoDeal {
 	}
     }
     
-    // waits one second
+    // waits four fifths of a second
     public void waitSec() {
 	try {
-	    Thread.sleep(1000); // 1000 milliseconds is one second
+	    Thread.sleep(800); // 1000 milliseconds is one second
 	} catch(InterruptedException ex) {
 	    Thread.currentThread().interrupt();
 	}
@@ -209,6 +214,7 @@ public class DealOrNoDeal {
 		System.out.println("--------------------------------------------------------------------------");
 
 		displayBoard();
+		waitSec();
 	    }
 	}
     }
@@ -265,12 +271,77 @@ public class DealOrNoDeal {
 	
 	if ( you.dealOrNoDeal().equals("deal") ) {
 	    gameOver = true;
+	    System.out.println("--------------------------------------------------------------------------\n");
+	    System.out.println("\t\t\t24\n");
+	    System.out.println("--------------------------------------------------------------------------\n");
+	    String ans = "";
+
+	    while (ans.equals("")){
+		
+		System.out.println("would you like to buy box 24 for " + commafy(d)+ " (all of your money)?\nIt contains a mystery prize! The prize is either: DOUBLING your money, adding $10,000 to the amount you made, just get your money back, half your money, or get nothing (end up with $0)\n yes or no?" );
+		try {
+		    ans = in.readLine();
+		}
+	   
+		catch (IOException e){}
+	    }
+	    if (ans.equals("yes")){
+		System.out.println("Ready...\n");
+		waitSec();
+		System.out.println("\nyou just ");
+		String result = box24();
+		if (result.equals("double")){
+		    System.out.print("WON double your money!\n");
+		    d*=2;
+		}
+		else if (result.equals("tenSousand")){
+		    System.out.print("WON an additional $10,000\n");
+		}
+		else if (result.equals("nada")){
+		    System.out.print("didn't win anything. But that's OK, you didn't lose either\n");
+		}
+		else if (result.equals("half")){
+		    System.out.print("LOST half of your money!\n");
+		    d/=2;
+		}
+		else {
+		    System.out.print("LOST ALL of your money!!!!\n");
+		    d = 0;
+		}
+	    }
+	    else if (ans.equals("no")){
+		System.out.println("playin it safe, eh?\n");
+		System.out.println("Alrighty then.\n");
+		waitSec();
+	    }
+	    else {
+		System.out.println("Please input a valid answer");
+	    }
+	    waitSec();
+	    
+	        
 	    System.out.println("--------------------------------------------------------------------------");
 	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(d) + "!!!!!!!");
 	    System.out.println("\nThanks for playing!\n");
 	}
 	
 	System.out.println("--------------------------------------------------------------------------\n");
+    }
+    public String box24(){
+	double prob = Math.random();
+	if (prob > .8){
+	    return "double";
+	}
+	else if (prob > .6){
+	    return "tenSousand";
+	}
+	else if (prob > .4){
+	    return "nada";
+	}
+	else if (prob > .2){
+	    return "half";
+	}
+	else {return "zilch";}
     }
     
     // time to play!
