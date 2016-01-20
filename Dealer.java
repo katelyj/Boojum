@@ -40,7 +40,6 @@ public class Dealer {
         // difference between values that were opened and all the values, leaving you with only the values of briefcases that weren't opened
     }
 
-
     // returns the deal delt by the dealer
     public int deal(ArrayList chosenValues, int[] values) {
 	setVals(chosenValues,values); // sets values properly

@@ -84,7 +84,6 @@ public class Player {
 	    System.out.println("\nUm, no.");
 	    return inputMode();
 	}
-	
     }
 
     // for new players who don't know what's up
@@ -122,7 +121,7 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
-	    if ( c < 0 || c > 24 ) {
+	    if ( c < 0 || c > 23 ) {
 		System.out.println("\nPick a valid case, please.\n");
 	    }
 	}

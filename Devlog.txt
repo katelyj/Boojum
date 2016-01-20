@@ -34,3 +34,4 @@ Kate edited CaseHolders and expanded it more, adding more possibilities for resp
 
 2016-01-19
 In class, Kate created the (very simple) driver file, for the sake of clenliness.
+At home, Bayle started Box 24 functionality, and Kate finished it.

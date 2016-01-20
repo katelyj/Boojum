@@ -154,7 +154,7 @@ public class DealOrNoDeal {
 	}
     }
     
-    // waits four fifths of a second
+    // waits four fifths of a second (the name is misleading, we know)
     public void waitSec() {
 	try {
 	    Thread.sleep(800); // 1000 milliseconds is one second
@@ -214,7 +214,6 @@ public class DealOrNoDeal {
 		System.out.println("--------------------------------------------------------------------------");
 
 		displayBoard();
-		waitSec();
 	    }
 	}
     }
@@ -249,7 +248,7 @@ public class DealOrNoDeal {
 	    waitSec();
 	    System.out.println("\n*~~~~~~~~~~$" + commafy(b.getValue()) + "!!!!!~~~~~~~~~~*");
 	    waitSec();
-	    System.out.println("\nThanks for playing!\n");
+	    end(b.getValue());
 	    System.out.println("--------------------------------------------------------------------------");
 	}
     }
@@ -271,77 +270,78 @@ public class DealOrNoDeal {
 	
 	if ( you.dealOrNoDeal().equals("deal") ) {
 	    gameOver = true;
-	    System.out.println("--------------------------------------------------------------------------\n");
-	    System.out.println("\t\t\t24\n");
-	    System.out.println("--------------------------------------------------------------------------\n");
-	    String ans = "";
-
-	    while (ans.equals("")){
-		
-		System.out.println("would you like to buy box 24 for " + commafy(d)+ " (all of your money)?\nIt contains a mystery prize! The prize is either: DOUBLING your money, adding $10,000 to the amount you made, just get your money back, half your money, or get nothing (end up with $0)\n yes or no?" );
-		try {
-		    ans = in.readLine();
-		}
-	   
-		catch (IOException e){}
-	    }
-	    if (ans.equals("yes")){
-		System.out.println("Ready...\n");
-		waitSec();
-		System.out.println("\nyou just ");
-		String result = box24();
-		if (result.equals("double")){
-		    System.out.print("WON double your money!\n");
-		    d*=2;
-		}
-		else if (result.equals("tenSousand")){
-		    System.out.print("WON an additional $10,000\n");
-		}
-		else if (result.equals("nada")){
-		    System.out.print("didn't win anything. But that's OK, you didn't lose either\n");
-		}
-		else if (result.equals("half")){
-		    System.out.print("LOST half of your money!\n");
-		    d/=2;
-		}
-		else {
-		    System.out.print("LOST ALL of your money!!!!\n");
-		    d = 0;
-		}
-	    }
-	    else if (ans.equals("no")){
-		System.out.println("playin it safe, eh?\n");
-		System.out.println("Alrighty then.\n");
-		waitSec();
-	    }
-	    else {
-		System.out.println("Please input a valid answer");
-	    }
-	    waitSec();
-	    
-	        
-	    System.out.println("--------------------------------------------------------------------------");
-	    System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(d) + "!!!!!!!");
-	    System.out.println("\nThanks for playing!\n");
+	    end(d);
 	}
 	
 	System.out.println("--------------------------------------------------------------------------\n");
     }
-    public String box24(){
-	double prob = Math.random();
-	if (prob > .8){
-	    return "double";
+    
+    // gives the player yet another chance to test their luck
+    public int box24(int m) {
+	System.out.println("\n--------------------------------------------------------------------------\n");
+	System.out.println("A quick detour...\n");
+	System.out.println("--------------------------------------------------------------------------\n");
+	String ans = "";
+
+	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+		
+	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(m)+ " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
+	    try {
+		ans = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+
+	    if ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+		System.out.println("\nYes or no only, please.\n");
+	    }
 	}
-	else if (prob > .6){
-	    return "tenSousand";
+	
+	if ( ans.equals("yes") ) { // the user has taken this chance
+	    System.out.println("\nHere we go...\n");
+	    System.out.println("bum");
+	    waitSec();
+	    System.out.println("bum");
+	    waitSec();
+	    System.out.println("bum");
+	    waitSec();
+
+	    double prob = Math.random();
+	    if ( prob > .8 ) { // user has won double their money
+		System.out.println("\nYOU JUST WON DOUBLE YOUR MONEY!!!!! CONGRATULATIONS!\n");
+	        m *= 2;
+	    }
+	    else if ( prob > .6 ) { // user has won an additional $10,000
+		System.out.println("\nYOU JUST WON AN ADDITIONAL $10,000!!!!! CONGRATS, MAN!\n");
+		m += 10000;
+	    }
+	    else if ( prob > .4 ) { // user just gets their original amount
+		System.out.println("\nYou get the same amount! Nothing has changed.\n");
+	    }
+	    else if ( prob > .2 ) { // user loses half their money
+		System.out.println("\nD'OH! You just lost half your money! Ouch...\n");
+		m /= 2;
+	    }
+	    else { // user loses everything
+		System.out.println("\nOh, man! You lost everything! Too bad. Play smarter next time!\n");
+	        m = 0;
+	    }
 	}
-	else if (prob > .4){
-	    return "nada";
+	
+	else {  // the user is playing it safe
+	    System.out.println("\nPlayin it safe, eh?\n");
+	    System.out.println("Alrighty then.\n");
 	}
-	else if (prob > .2){
-	    return "half";
-	}
-	else {return "zilch";}
+
+	waitSec();
+	return m;
+    }
+
+    // the true end of the game
+    public void end(int m) {
+	m = box24(m);
+	System.out.println("--------------------------------------------------------------------------");
+	System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(m) + "!!!!!!!");
+	System.out.println("\nThanks for playing!\n");
     }
     
     // time to play!
