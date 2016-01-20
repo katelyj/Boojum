@@ -35,3 +35,7 @@ Kate edited CaseHolders and expanded it more, adding more possibilities for resp
 2016-01-19
 In class, Kate created the (very simple) driver file, for the sake of clenliness.
 At home, Bayle started Box 24 functionality, and Kate finished it.
+
+2016-01-20
+In class, Mr. Brown finally read our email about having a new Github repository.
+Then, Bayle and I worked on creating another alternate ending, where a user can guess what in in their briefcase to gain (or lose) an additional $500.
