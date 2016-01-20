@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Dealer {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
+    
     private double luck;
     private int totVals;
     private int totBrief;

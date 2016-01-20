@@ -25,15 +25,15 @@ public class CaseHolders {
 	regResponse = new String[] {"Alright.","OK.","Fine.","Kay.","Average.","Not great.","Meh.","You're getting there.",
 				    "Eh.","Shrug."};
 	likePos = new String[] {"You're amazing! Keep on going!","You're on your way to success, my friend!",
-				"Call me when you're famous?","That's magnificant, you beautiful human you.",
-				"Brilliant! As always :)","Wow, you're my hero.","Wow!!! What a champion."};
-	likeNeg = new String[] {"You'll do better next time","No worries","That's OK", "Nice try","You can do it!",
-			      "Don't be sad","We all make mistakes","It happens","I still love you!"};
-	unlikePos = new String[] {"Kinda good, I guess","You're just lucky","Remember, there is no skill",
-			       "don't get excited","People have done better","<sarcastically> Well done","Whatever",
-			       "Sure, you got one good draw","I'll make sure it doesn't happen again"};
-	unlikeNeg = new String[] {"You're trash.","LOL, you suck.","Why don't you just give up now?","Haha, loser.",
-				  "Nice try, loser."};
+				"Call me when you're famous?","That's magnificant, you beautiful human you!",
+				"Brilliant! As always :)","Wow, you're my hero!","Wow!!! What a champion!"};
+	likeNeg = new String[] {"You'll do better next time!","No worries!","That's OK!", "Nice try!","You can do it!",
+				"Don't be sad!","We all make mistakes!","It happens!","I still love you!"};
+	unlikePos = new String[] {"Kinda good, I guess.","You just got lucky.","Remember, there is no skill.",
+				  "Don't get too excited.","People have done better.","<sarcastically> Well done, loser.","Whatever.",
+				  "Sure, you got one good draw.","I'll make sure it doesn't happen again."};
+	unlikeNeg = new String[] {"You're trash.","LOL, you suck.","Why don't you just give up now?","*cough* *cough* Loser.",
+				  "Nice try. Not.","I totally saw that one coming.","Wow, what a failure. Like you in general, tbh."};
     }
 			    
     public CaseHolders(int like) {

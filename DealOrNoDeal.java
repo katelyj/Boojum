@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class DealOrNoDeal {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
+    
     private InputStreamReader isr;
     private BufferedReader in;
     private Player you;
@@ -276,7 +277,7 @@ public class DealOrNoDeal {
 	System.out.println("--------------------------------------------------------------------------\n");
     }
     
-    // gives the player yet another chance to test their luck
+    // gives the player yet another chance to test their luck at the very end of the game
     public int box24(int m) {
 	System.out.println("\n--------------------------------------------------------------------------\n");
 	System.out.println("A quick detour...\n");
@@ -360,7 +361,7 @@ public class DealOrNoDeal {
 	    if ( ! gameOver ) {
 		displayBoard();
 		round(r); }
-	    if ( ! gameOver ) { // so deal() won't happen if the player completes finalTwo()
+	    if ( ! gameOver ) { // so deal() won't happen if the player has the finalTwo() round
 		deal();
 	    }
 	}
