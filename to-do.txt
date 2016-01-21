@@ -1,2 +1,3 @@
-optimization??????
 make values an arrayList
+add response to final amount
+random responses instead of "whimp"

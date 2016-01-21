@@ -40,3 +40,7 @@ At home, Bayle started Box 24 functionality, and Kate finished it.
 In class, Mr. Brown finally read our email about having a new Github repository.
 Then, Bayle and Kate worked on creating another alternate ending, where a user can guess what in in their briefcase to gain (or lose) an additional $500.
 Kate finished it at home, and added necessary helper methods.
+
+2016-01-21
+In class, we worked on some cool fancy animation thing that makes our display prettier. 
+But that is still a work in progress as we are not sure what exactly to do with it.
