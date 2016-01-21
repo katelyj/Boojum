@@ -8,7 +8,7 @@ import java.util.*;
 public class Player {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-
+    private Animation ani = new Animation("wave");
     private String name;
     private int yourCase;
     private double luck;
@@ -44,6 +44,7 @@ public class Player {
 	    }
 	    catch ( IOException e ) {}
 	}
+	ani.dance();
 	System.out.println("\nHello, " + n + ", welcome to Deal Or No Deal!!!");
 	return n;
     }
@@ -197,5 +198,6 @@ public class Player {
     public void setLikability(int l) {
 	likability = l;
     }
+
 
 } // end class Player

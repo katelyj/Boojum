@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DealOrNoDeal {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-    private Animation ani = new Animation("wave");
+   
     private InputStreamReader isr;
     private BufferedReader in;
     private Player you;
@@ -81,7 +81,6 @@ public class DealOrNoDeal {
 	String s = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 	s += "\t\tBRIEFCASES\n";
         s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
-	ani.dance();
 	// the cases
 
 	// puts case numbers in a 2d array (makes it easier to display neatly later)
