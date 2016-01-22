@@ -20,7 +20,7 @@ public class Animation {
     
     public void waits() {
 	try {
-	    Thread.sleep(300); // waits 300 milliseconds
+	    Thread.sleep(100); // waits 100 milliseconds
 	}
 	catch ( InterruptedException ex ) {
 	    Thread.currentThread().interrupt();
@@ -28,22 +28,40 @@ public class Animation {
     }
     
     public void dance() {
-	if ( person.equals("wave") ) {
-	    System.out.println("\033c");
-	    System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n*  ||-----||\n   \"\"     \"\"\n");
-	    waits();
-	    System.out.println("\033c");
-	    System.out.println("          (oo)\n  +========\\/\n/ || %%% ||\n*  ||-----||\n   \"\"     \"\"\n");
-	    waits();
-	    System.out.println("\033c");
-	    System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n*  ||-----||\n   \"\"     \"\"\n");
-	    waits();
-	    System.out.println("\033c");
-	    System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n*  ||-----||\n   \"\"     \"\"\n");
-	    
+	for (int i = 0; i < 30; i++){
+	    if ( person.equals("wave") ) {
+		System.out.println("\033c");
+		System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+		System.out.println("\033c");
+		System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		System.out.println("\033c");
+		System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+		waits();
+
+	    }
 	}
     }
     
 } // end class Animation
-
 
