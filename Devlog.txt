@@ -45,4 +45,4 @@ Kate finished it at home, and added necessary helper methods.
 In class, we worked on some cool fancy animation thing that makes our display prettier. 
 But that is still a work in progress as we are not sure what exactly to do with it.
 When we got home, Bayle implemented the doggy animation.
-Kate edited her code after, and changed the formatting of the game setup a bit.
+Kate edited her code after, and changed the formatting of the game setup a bit. She also modified the end of the game a bit aesthetically, but nothing major.

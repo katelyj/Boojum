@@ -35,8 +35,6 @@ public class Player {
 	
 	ani.dance();
 	System.out.println("Hello, " + name + ", welcome to Deal Or No Deal!!!\n");
-	
-	
     }
 
 
@@ -202,6 +200,5 @@ public class Player {
     public void setLikability(int l) {
 	likability = l;
     }
-
 
 } // end class Player

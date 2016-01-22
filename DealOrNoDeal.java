@@ -216,10 +216,8 @@ public class DealOrNoDeal {
 		System.out.println("bum");
 		waitSec();
 		System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!~~~~~~~~~~*");
-		waitSec();
-		
-		String response = caseholder.response(val);	
-		System.out.println("\n" + response);
+		waitSec();	
+		System.out.println("\n" + caseholder.response(val));
 		waitSec();
 
 		r -= 1;
@@ -262,6 +260,8 @@ public class DealOrNoDeal {
 	    System.out.println("bum");
 	    waitSec();
 	    System.out.println("\n*~~~~~~~~~~$" + commafy(finalAmount) + "!!!!!~~~~~~~~~~*");
+	    waitSec();
+	    System.out.println("\n" + caseholder.response(finalAmount));
 	    waitSec();
 	    end();
 	    System.out.println("--------------------------------------------------------------------------");
