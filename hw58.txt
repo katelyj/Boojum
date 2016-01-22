@@ -19,13 +19,15 @@ HW58 -- Checking In
 3. Cool Stuff Learned:
 	We learned how to wait.
 	(We learned how to make the terminal wait a specific amount of seconds before printing whatever is needs to.)
-	We also learned how to clear the terminal in order to make fun animations.
+	We also learned how to clear the terminal, and change colors, in order to make fun animations.(Thanks to Elias)
+	   We also learned how to use Gliffy
 
 
 4. Mid-development Design Changes:
-	We do a lot of moving around (moving methods to different classes, changing the order of our code, etc). The design is always changing in a way.
+	We do a lot of moving around (moving methods to different classes, changing the order of our code, etc). The design is always changing in a way. - moving methods from one class to another
+	We also keep on adding cute comments/extra stuff
 
 
 5. Lessons Learned:
-	Communication is key! Also, Bayle doesn't put spaces in between her curly brackets, and this annoys Kate, because she always has to fix it.
+	Communication is key! Also, Bayle doesn't put spaces in between her curly brackets, and this annoys Kate, because she always has(NOTE-she does not HAVE to) to fix it.
 	Also, when designing a game, figuring out the EXACT gameplay before starting is essential.
