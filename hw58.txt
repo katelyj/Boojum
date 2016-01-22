@@ -1,0 +1,29 @@
+Kate Johnston and Bayle Smith-Salzberg
+APCS1 pd10
+HW58 -- Checking In
+2015-01-22
+
+1. Obstacles Overcome: 
+	Merging on Github, discovered 1/19 2k16. It's been a struggle, but in the end, we pulled through. 
+	Another obstacle we overcame was figuring out how likability and luck would affect a user's gameplay. This took us a while to figure out, but once we decided on something solid, it was cool.
+	Printing the board took a super long time, and we accidentally did it on our own at the same time, because of a lack of communication. Thankfully, though, that was at the beginning, so we learned our lesson!
+
+
+2. Unresolved Issues:
+	An issue we have right now is the animation we are trying to do. It's not essential (it's for aesthetic purposes only), but we can't get the darn dog to move his legs right! So that's frustrating.
+	Also, we have not figured out how all our classes are related to each other, besides what interacts with what. There is no sort of inheritance structure, because none is needed. So we're a bit worried about this.
+
+
+3. Cool Stuff Learned:
+	We learned how to wait.
+	(We learned how to make the terminal wait a specific amount of seconds before printing whatever is needs to.)
+	We also learned how to clear the terminal in order to make fun animations.
+
+
+4. Mid-development Design Changes:
+	We do a lot of moving around (moving methods to different classes, changing the order of our code, etc). The design is always changing in a way.
+
+
+5. Lessons Learned:
+	Communication is key! Also, Bayle doesn't put spaces in between her curly brackets, and this annoys Kate, because she always has to fix it.
+	Also, when designing a game, figuring out the EXACT gameplay before starting is essential.
