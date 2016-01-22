@@ -7,7 +7,9 @@ HW58 -- Checking In
 	Merging on Github, discovered 1/19 2k16. It's been a struggle, but in the end, we pulled through. 
 	Another obstacle we overcame was figuring out how likability and luck would affect a user's gameplay. This took us a while to figure out, but once we decided on something solid, it was cool.
 	Printing the board took a super long time, and we accidentally did it on our own at the same time, because of a lack of communication. Thankfully, though, that was at the beginning, so we learned our lesson!
-
+	We had a fully functional code very early on, but it was pretty simple even though it incorporated all of the US's Deal Or No Deal game play. So, we looked at the UK and Australia and implemented all the cool additional thing they have on their version of Deal Or No Deal.
+	We had to decide where to but each print statement (prompt for the user) because they are not all in the same file, even though, to the user, it all looks the same.
+	Dog can now wag tail, but could not before!!!! *UPDATE
 
 2. Unresolved Issues:
 	An issue we have right now is the animation we are trying to do. It's not essential (it's for aesthetic purposes only), but we can't get the darn dog to move his legs right! So that's frustrating.
