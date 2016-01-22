@@ -34,7 +34,7 @@ Kate edited CaseHolders and expanded it more, adding more possibilities for resp
 
 2016-01-19
 In class, Kate created the (very simple) driver file, for the sake of clenliness.
-At home, Bayle started Box 24 functionality, and Kate finished it.
+At home, we both worked on implementing the Box 24 method.
 
 2016-01-20
 In class, Mr. Brown finally read our email about having a new Github repository.
@@ -44,3 +44,5 @@ Kate finished it at home, and added necessary helper methods.
 2016-01-21
 In class, we worked on some cool fancy animation thing that makes our display prettier. 
 But that is still a work in progress as we are not sure what exactly to do with it.
+When we got home, Bayle implemented the doggy animation.
+Kate edited her code after, and changed the formatting of the game setup a bit.

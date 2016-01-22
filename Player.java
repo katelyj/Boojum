@@ -8,11 +8,12 @@ import java.util.*;
 public class Player {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-    private Animation ani = new Animation("wave");
+    
     private String name;
     private int yourCase;
     private double luck;
     private int likability;
+    private Animation ani;
     private InputStreamReader isr;
     private BufferedReader in;
     private final String rules = "\nTHE RULES:\n\nIn this game, there are 24 briefcases filled with money, ranging from $1 to $1,000,000. Without knowing the amounts inside, you will choose a briefcase to be your own. This briefcase will stick with you throughout the game, and at the end, you will win whatever is inside of it.\n\nEach round, you will open a designated number of briefcases, revealing the amounts of money they have inside. This will give you a clue as to what is NOT in your own briefcase. And at the end of each round, you will be presented a certain amount of money: a deal. You can either make the deal and take this money, ending the game and never knowing how much was in your case, or reject the deal and keep opening more briefcases.\n\nIf you get to the end without making a deal, you will win whatever amount is in your own briefcase.\n\nNow, press enter to begin...\n";
@@ -23,11 +24,18 @@ public class Player {
     public Player() {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
-	name = inputName();
+	ani = new Animation("wave");
 	luck = 1;
 	likability = 0;
 	yourCase = -1;
-	System.out.println(inputMode());
+	name = "";
+
+	inputName();
+	inputMode();
+	
+	ani.dance();
+	System.out.println("Hello, " + name + ", welcome to Deal Or No Deal!!!\n");
+	
 	
     }
 
@@ -35,22 +43,18 @@ public class Player {
     // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~
 
     // gets and returns name from the user
-    public String inputName() {
-	String n = "";
-	while ( n.equals("") ) { // to ensure non-empty names
+    public void inputName() {
+	while ( name.equals("") ) { // to ensure non-empty names
 	    System.out.println("Name? \n");
 	    try {
-		n = in.readLine();
+		name = in.readLine();
 	    }
 	    catch ( IOException e ) {}
 	}
-	ani.dance();
-	System.out.println("\nHello, " + n + ", welcome to Deal Or No Deal!!!");
-	return n;
     }
     
    // sets mode
-    public String inputMode() {
+    public void inputMode() {
 	int n = 0;
 	while ( n == 0 ) {
 	    
@@ -69,21 +73,21 @@ public class Player {
 	}
 	
 	if ( n == 1 ) {
-	    return "\nCongrats, you are a regular person!\n";
+	    System.out.println("\nCongrats, you are a regular person!\n");
 	}
-	if ( n == 2 ) {
+	else if ( n == 2 ) {
 	    setLuck(0.9);
 	    setLikability(1);
-	    return "\nCongrats, you are a likable person!\n";
+	    System.out.println("\nCongrats, you are a likable person!\n");
 	}
-	if ( n == 3 ) {
+	else if ( n == 3 ) {
 	    setLuck(1.1);
 	    setLikability(-1);
-	    return "\nCongrats, you are a lucky person!\n";
+	    System.out.println("\nCongrats, you are a lucky person!\n");
 	}
 	else {
 	    System.out.println("\nUm, no.");
-	    return inputMode();
+	    inputMode();
 	}
     }
 

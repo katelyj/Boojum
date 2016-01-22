@@ -1,6 +1,6 @@
 /*=============================================
   class DealOrNoDeal -- The main functionality of the game!
-  Required classes: Player, Dealer, Caseholders, Briefcase
+  Required classes: Player, Dealer, Caseholders, Briefcase, Animation
   =============================================*/
 
 import java.io.*;

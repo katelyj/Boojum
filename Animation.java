@@ -1,17 +1,34 @@
-public class Animation{
+/*=============================================
+  class Animation -- A cute lil dog for all your aesthetic pleasures!
+  =============================================*/
+
+public class Animation {
+
+    // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
+    
     private String person;
-    public Animation(String p){
+
+    
+    // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
+    
+    public Animation(String p) {
 	person = p;
     }
+
+    
+    // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
+    
     public void waits() {
 	try {
-	    Thread.sleep(300); // 1000 milliseconds is one second
-	} catch(InterruptedException ex) {
+	    Thread.sleep(300); // waits 300 milliseconds
+	}
+	catch ( InterruptedException ex ) {
 	    Thread.currentThread().interrupt();
 	}
     }
-    public void dance(){
-	if (person.equals("wave")){
+    
+    public void dance() {
+	if ( person.equals("wave") ) {
 	    System.out.println("\033c");
 	    System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n*  ||-----||\n   \"\"     \"\"\n");
 	    waits();
@@ -26,6 +43,7 @@ public class Animation{
 	    
 	}
     }
-}
+    
+} // end class Animation
 
 
