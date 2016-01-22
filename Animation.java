@@ -28,40 +28,131 @@ public class Animation {
     }
     
     public void dance() {
-	for (int i = 0; i < 30; i++){
-	    if ( person.equals("wave") ) {
-		System.out.println("\033c");
-		System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
-		System.out.println("\033c");
-		System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		System.out.println("\033c");
-		System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
-		waits();
+	for (int i = 0; i < 1; i++){
 
-	    }
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");		waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n |+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n \\+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n _+========\\/\n   || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n  +========\\/\n/  || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    System.out.println("\033c");
+	    System.out.println("          (oo)\n  +========\\/\n / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	    waits();
+
 	}
-    }
+	
+	System.out.println("            (oo)\n    +========\\/\n   / || %%% ||\n   ||-----||\n   \"\"     \"\"\n");
+	waits();
+	System.out.println("            (oo)\n    +========\\/\n   / || %%% ||\n     ||-----||\n     \"\"     \"\"\n");
+	waits();
+		
+	System.out.println("              (oo)\n      +========\\/\n     / || %%% ||\n     ||-----||\n     \"\"     \"\"\n");
+	waits();
+	System.out.println("              (oo)\n      +========\\/\n     / || %%% ||\n       ||-----||\n       \"\"     \"\"\n");
+	waits();
+		
+	System.out.println("                (oo)\n        +========\\/\n       / || %%% ||\n       ||-----||\n       \"\"     \"\"\n");
+	waits();
+	System.out.println("                (oo)\n        +========\\/\n       / || %%% ||\n         ||-----||\n         \"\"     \"\"\n");
+	waits();
+		
+	System.out.println("                  (oo)\n          +========\\/\n         / || %%% ||\n         ||-----||\n         \"\"     \"\"\n");
+	waits();
+	System.out.println("                  (oo)\n          +========\\/\n         / || %%% ||\n           ||-----||\n           \"\"     \"\"\n");
+	waits();
+	System.out.println("                    (oo)\n            +========\\/\n           / || %%% ||\n           ||-----||\n           \"\"     \"\"\n");
+	waits();
+	System.out.println("                    (oo)\n            +========\\/\n           / || %%% ||\n             ||-----||\n             \"\"     \"\"\n");
+	waits();
+	System.out.println("                      (oo)\n              +========\\/\n             / || %%% ||\n             ||-----||\n             \"\"     \"\"\n");
+	waits();
+	System.out.println("                      (oo)\n              +========\\/\n             / || %%% ||\n               ||-----||\n               \"\"     \"\"\n");
+	waits();
+	System.out.println("                        (oo)\n                +========\\/\n               / || %%% ||\n               ||-----||\n               \"\"     \"\"\n");
+	waits();
+	System.out.println("                        (oo)\n                +========\\/\n               / || %%% ||\n                 ||-----||\n                 \"\"     \"\"\n");
+	waits();
+	System.out.println("                          (oo)\n                  +========\\/\n                 / || %%% ||\n                   ||-----||\n                   \"\"     \"\"\n");
+	waits();
+	System.out.println("                            (oo)\n                    +========\\/\n                   / || %%% ||\n                   ||-----||\n                   \"\"     \"\"\n");
+	waits();
+	System.out.println("                            (oo)\n                    +========\\/\n                   / || %%% ||\n                     ||-----||\n                     \"\"     \"\"\n");
+	waits();
+	System.out.println("                              (oo)\n                      +========\\/\n                     / || %%% ||\n                       ||-----||\n                       \"\"     \"\"\n");
+	waits();
+	System.out.println("                                (oo)\n                        +========\\/\n                       / || %%% ||\n                       ||-----||\n                       \"\"     \"\"\n");
+	waits();
+	System.out.println("                                (oo)\n                        +========\\/\n                       / || %%% ||\n                         ||-----||\n                         \"\"     \"\"\n");
+	waits();
+	System.out.println("                                  (oo)\n                          +========\\/\n                         / || %%% ||\n                         ||-----||\n                         \"\"     \"\"\n");
+	waits();
+	System.out.println("                                  (oo)\n                          +========\\/\n                         / || %%% ||\n                           ||-----||\n                           \"\"     \"\"\n");
+	waits();
+	System.out.println("                                    (oo)\n                            +========\\/\n                           / || %%% ||\n                           ||-----||\n                           \"\"     \"\"\n");
+	waits();
+	System.out.println("                                    (oo)\n                            +========\\/\n                           / || %%% ||\n                             ||-----||\n                             \"\"     \"\"\n");
+	waits();
+	System.out.println("                                      (oo)\n                              +========\\/\n                             / || %%% ||\n                             ||-----||\n                             \"\"     \"\"\n");
+	waits();
+	System.out.println("                                      (oo)\n                              +========\\/\n                             / || %%% ||\n                               ||-----||\n                               \"\"     \"\"\n");
+	waits();
+	System.out.println("                                      (oo)\n                              +========\\/\n                             / || %%% ||\n                                 ||-----||\n                                 \"\"     \"\"\n");
+	waits();
+	System.out.println("                                        (oo)\n                                +========\\/\n                               / || %%% ||\n                                 ||-----||\n                                 \"\"     \"\"\n");
+	waits();
+	System.out.println("                                        (oo)\n                                +========\\/\n                               / || %%% ||\n                                   ||-----||\n                                   \"\"     \"\"\n");
+	waits();
+	System.out.println("                                          (oo)\n                                  +========\\/\n                                 / || %%% ||\n                                   ||-----||\n                                   \"\"     \"\"\n");
+	waits();
+	System.out.println("                                            (oo)\n                                    +========\\/\n                                   / || %%% ||\n                                     ||-----||\n                                     \"\"     \"\"\n");
+	waits();
+	System.out.println("                                            (oo)\n                                    +========\\/\n                                   / || %%% ||\n                                       ||-----||\n                                       \"\"     \"\"\n");
+	waits();
+	System.out.println("                                              (oo)\n                                      +========\\/\n                                     / || %%% ||\n                                       ||-----||\n                                       \"\"     \"\"\n");
+	waits();
+	System.out.println("                                              (oo)\n                                      +========\\/\n                                     / || %%% ||\n                                         ||-----||\n                                         \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                (oo)\n                                        +========\\/\n                                       / || %%% ||\n                                         ||-----||\n                                         \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                  (oo)\n                                          +========\\/\n                                         / || %%% ||\n                                         ||-----||\n                                         \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                    (oo)\n                                            +========\\/\n                                           / || %%% ||\n                                           ||-----||\n                                           \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                    (oo)\n                                            +========\\/\n                                           / || %%% ||\n                                             ||-----||\n                                             \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                      (oo)\n                                              +========\\/\n                                             / || %%% ||\n                                             ||-----||\n                                             \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                      (oo)\n                                              +========\\/\n                                             / || %%% ||\n                                               ||-----||\n                                               \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                        (oo)\n                                                +========\\/\n                                               / || %%% ||\n                                               ||-----||\n                                               \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                        (oo)\n                                                +========\\/\n                                               / || %%% ||\n                                                 ||-----||\n                                                 \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                          (oo)\n                                                  +========\\/\n                                                 / || %%% ||\n                                                 ||-----||\n                                                 \"\"     \"\"\n");
+	waits();
+	System.out.println("                                                          (oo)\n                                                  +========\\/\n                                                 / || %%% ||\n                                                   ||-----||\n                                                   \"\"     \"\"\n");
+	waits();
     
-} // end class Animation
+    }
+}      // end class Animation
 
