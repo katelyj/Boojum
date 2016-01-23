@@ -13,6 +13,7 @@ public class CaseHolders {
     private String[] likeNeg; // alternate neg for likable people
     private String[] unlikePos; // alternate pos for unlikable people
     private String[] unlikeNeg; // alternate neg for unlikable people
+    private String[] insults; // for players who are just duds
     private int likability;
 
     // ~~~~~~~~~~~ CONSTRUCTORS ~~~~~~~~~~~
@@ -34,6 +35,7 @@ public class CaseHolders {
 				  "Sure, you got one good draw.","I'll make sure it doesn't happen again."};
 	unlikeNeg = new String[] {"You're trash.","LOL, you suck.","Why don't you just give up now?","*cough* *cough* Loser.",
 				  "Nice try. Not.","I totally saw that one coming.","Wow, what a failure. Like you in general, tbh."};
+	insults = new String[] {"Whimp.","Fine, have it your way.","I guess. Dud.","Okay. Whatever."};
     }
 			    
     public CaseHolders(int like) {
@@ -90,6 +92,13 @@ public class CaseHolders {
 	    }
 	}
 	
+    }
+    
+    // for insulting the player
+    public String insult() {
+	double prob = Math.random();
+	int pos = (int)(prob * insults.length);
+	return insults[pos];
     }
     
 } // end class CaseHolders

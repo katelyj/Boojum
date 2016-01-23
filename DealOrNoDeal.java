@@ -165,7 +165,7 @@ public class DealOrNoDeal {
 	}
     }
 
-    // returns if a number is a valid amount in our game of Deal Or No Deal (aka if it's in the instance variable values)
+    // returns if a number is a valid amount to guess (aka if it's in the instance variable values)
     public boolean isValue(int amount) {
 	for ( int v : values ) {
 	    if ( amount == v ) {
@@ -394,7 +394,7 @@ public class DealOrNoDeal {
 	}
 	
 	else { // the player is a dud
-	    System.out.println("\nWhimp.");
+	    System.out.println("\n" + caseholder.insult());
 	}
 
 	waitSec();

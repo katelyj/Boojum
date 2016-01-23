@@ -22,19 +22,19 @@ public class Player {
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public Player() {
- isr = new InputStreamReader( System.in );
- in = new BufferedReader( isr );
- ani = new Animation("wave");
- luck = 1;
- likability = 0;
- yourCase = -1;
- name = "";
+	isr = new InputStreamReader( System.in );
+	in = new BufferedReader( isr );
+	ani = new Animation("wave");
+	luck = 1;
+	likability = 0;
+	yourCase = -1;
+	name = "";
 
- inputName();
- inputMode();
+	inputName();
+	inputMode();
  
- ani.dance();
- System.out.println("Hello, " + name + ", welcome to Deal Or No Deal!!!\n");
+	ani.dance();
+	System.out.println("Hello, " + name + ", welcome to Deal Or No Deal!!!\n");
     }
 
 
@@ -42,163 +42,163 @@ public class Player {
 
     // gets and returns name from the user
     public void inputName() {
- while ( name.equals("") ) { // to ensure non-empty names
-     System.out.println("Name? \n");
-     try {
-  name = in.readLine();
-     }
-     catch ( IOException e ) {}
- }
+	while ( name.equals("") ) { // to ensure non-empty names
+	    System.out.println("Name? \n");
+	    try {
+		name = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+	}
     }
     
-   // sets mode
+    // sets mode
     public void inputMode() {
- int n = 0;
- while ( n == 0 ) {
+	int n = 0;
+	while ( n == 0 ) {
      
-     System.out.println("\nPlease type 1 if you would like to be a regular player." +
-     "\nPlease type 2 if you would like to be a likable player, but unlucky." +
-     "\nPlease type 3 if you would like to be a lucky player, but not likable.\n");
+	    System.out.println("\nPlease type 1 if you would like to be a regular player." +
+			       "\nPlease type 2 if you would like to be a likable player, but unlucky." +
+			       "\nPlease type 3 if you would like to be a lucky player, but not likable.\n");
      
-     try {
-  n = Integer.parseInt(in.readLine());
-     }
-     catch ( NumberFormatException e ) {
-  System.out.println("\nThat doesn't look like a number.");
-     }
-     catch ( IOException e ) {}
+	    try {
+		n = Integer.parseInt(in.readLine());
+	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
+	    catch ( IOException e ) {}
      
- }
+	}
  
- if ( n == 1 ) {
-     System.out.println("\nCongrats, you are a regular person!\n");
- }
- else if ( n == 2 ) {
-     setLuck(0.9);
-     setLikability(1);
-     System.out.println("\nCongrats, you are a likable person!\n");
- }
- else if ( n == 3 ) {
-     setLuck(1.1);
-     setLikability(-1);
-     System.out.println("\nCongrats, you are a lucky person!\n");
- }
- else {
-     System.out.println("\nUm, no.");
-     inputMode();
- }
+	if ( n == 1 ) {
+	    System.out.println("\nCongrats, you are a regular person!\n");
+	}
+	else if ( n == 2 ) {
+	    setLuck(0.9);
+	    setLikability(1);
+	    System.out.println("\nCongrats, you are a likable person!\n");
+	}
+	else if ( n == 3 ) {
+	    setLuck(1.1);
+	    setLikability(-1);
+	    System.out.println("\nCongrats, you are a lucky person!\n");
+	}
+	else {
+	    System.out.println("\nUm, no.");
+	    inputMode();
+	}
     }
 
     // for new players who don't know what's up
     public void rules() {
- String b = "";
- System.out.println("Before we begin, do you know how to play? (yes/no)\n");
- while ( (! b.equals("yes")) && (! b.equals("no")) ) {
-     try {
-  b = in.readLine();
-     }
-     catch ( IOException e ) {}
-     if ( (! b.equals("yes")) && (! b.equals("no")) ) {
-  System.out.println("\nPlease choose yes or no!\n");
-     }
- }
- if ( b.equals("no") ) {
-     System.out.println(rules);
-     try { in.readLine(); }
-     catch ( IOException e ) {}
- }
- else {
-     System.out.println("\nGreat! Now let's begin...");
- }
+	String b = "";
+	System.out.println("Before we begin, do you know how to play? (yes/no)\n");
+	while ( (! b.equals("yes")) && (! b.equals("no")) ) {
+	    try {
+		b = in.readLine();
+	    }
+	    catch ( IOException e ) {}
+	    if ( (! b.equals("yes")) && (! b.equals("no")) ) {
+		System.out.println("\nPlease choose yes or no!\n");
+	    }
+	}
+	if ( b.equals("no") ) {
+	    System.out.println(rules);
+	    try { in.readLine(); }
+	    catch ( IOException e ) {}
+	}
+	else {
+	    System.out.println("\nGreat! Now let's begin...");
+	}
     }
 
     // picking your case
     public int pickCase() {
- int c = -1;
- while ( c < 0 || c > 24 ) {
-     System.out.println("Pick a case to open...\n");
-     try {
-  c = Integer.parseInt(in.readLine());
-     }
-     catch ( NumberFormatException e ) {
-  System.out.println("\nThat doesn't look like a number.");
-     }
-     catch ( IOException e ) {}
-     if ( c < 0 || c > 23 ) {
-  System.out.println("\nPick a valid case, please.\n");
-     }
- }
- return c;
+	int c = -1;
+	while ( c < 0 || c > 24 ) {
+	    System.out.println("Pick a case to open...\n");
+	    try {
+		c = Integer.parseInt(in.readLine());
+	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
+	    catch ( IOException e ) {}
+	    if ( c < 0 || c > 23 ) {
+		System.out.println("\nPick a valid case, please.\n");
+	    }
+	}
+	return c;
     }
 
     // mutator for yourCase
     public void setYourCase() {
- while ( yourCase < 0 || yourCase > 24 ) {
-     System.out.println("Choose a briefcase to be your own.\nBe wary. This case will stick with you throughout your time here...\n");
-     try {
-  yourCase = Integer.parseInt(in.readLine());
-     }
-     catch ( NumberFormatException e ) {
-  System.out.println("\nThat doesn't look like a number.");
-     }
-     catch ( IOException e ) {}
-     if ( yourCase < 0 || yourCase > 23 ) {
-  System.out.println("\nPick a valid case, please.\n");
-     }
- }
+	while ( yourCase < 0 || yourCase > 24 ) {
+	    System.out.println("Choose a briefcase to be your own.\nBe wary. This case will stick with you throughout your time here...\n");
+	    try {
+		yourCase = Integer.parseInt(in.readLine());
+	    }
+	    catch ( NumberFormatException e ) {
+		System.out.println("\nThat doesn't look like a number.");
+	    }
+	    catch ( IOException e ) {}
+	    if ( yourCase < 0 || yourCase > 23 ) {
+		System.out.println("\nPick a valid case, please.\n");
+	    }
+	}
     }
 
     // allows the user to choose to make the deal or not
     public String dealOrNoDeal() {
- String n = "";
- System.out.println("\ndeal, or no deal?\n(all lower case please)\n");
+	String n = "";
+	System.out.println("\ndeal, or no deal?\n(all lower case please)\n");
  
- try {
-     n = in.readLine();
- }
- catch ( IOException e ) {}
+	try {
+	    n = in.readLine();
+	}
+	catch ( IOException e ) {}
 
- if ( n.equals("deal") ) {
-     return n;
- }
- else if ( n.equals("no deal") ) {
-     System.out.println("\nAnd the game continues on!\n");
-     return n;
- }
- else {
-     System.out.println("\nUhh... let's try that again, shall we?\n");
-     return dealOrNoDeal();
- }
+	if ( n.equals("deal") ) {
+	    return n;
+	}
+	else if ( n.equals("no deal") ) {
+	    System.out.println("\nAnd the game continues on!\n");
+	    return n;
+	}
+	else {
+	    System.out.println("\nUhh... let's try that again, shall we?");
+	    return dealOrNoDeal();
+	}
     }
        
     // accessor for case
     public int getYourCase(){
- return yourCase;
+	return yourCase;
     }
 
     // accessor for name
     public String getName() {
- return name;
+	return name;
     }
 
     // accessor for luck
     public double getLuck() {
- return luck;
+	return luck;
     }
 
     // accessor for likeability
     public int getLikability() {
- return likability;
+	return likability;
     }
 
     // mutator for luck
     public void setLuck(double l) {
- luck = l;
+	luck = l;
     }
     
     // mutator for likability
     public void setLikability(int l) {
- likability = l;
+	likability = l;
     }
 
 } // end class Player
