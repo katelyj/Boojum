@@ -240,5 +240,6 @@ public class Animation {
 	waits();
     
     }
+    
 }      // end class Animation
 

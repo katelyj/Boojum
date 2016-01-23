@@ -19,6 +19,7 @@ public class Dealer {
 
     public Dealer (double l) {
 	luck = l;
+	// we do not set all the other variables here because they will change with each deal!
     }
 
     
@@ -45,9 +46,12 @@ public class Dealer {
 
     // returns the deal delt by the dealer
     public int deal(ArrayList chosenValues, int[] values) {
+	
 	setVals(chosenValues,values); // sets values properly
 	int mean = leftVals / totBrief; // average of totVals in briefcases not opened
+	
 	return (int)(luck * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
+	
     }
     
 } // end class Dealer

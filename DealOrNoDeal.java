@@ -13,11 +13,14 @@ public class DealOrNoDeal {
    
     private InputStreamReader isr;
     private BufferedReader in;
+    
     private Player you;
     private Dealer banker;
     private CaseHolders caseholder;
+    
     private boolean gameOver;
     private int finalAmount;
+    
     private ArrayList cases;
     private ArrayList chosenValues;
     private int[] values;
@@ -32,11 +35,13 @@ public class DealOrNoDeal {
     public DealOrNoDeal() {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
+	
 	gameOver = false;
 	finalAmount = 0;
 	chosenValues = new ArrayList<Integer>();
 
-	// sets up values array
+	// sets up values array (not ArrayList so it can match up with fvalues)
+	// and also it's easier to use arrays for mathematical purposes (you have ints instead of Integers)
 	values = new int[fvalues.length];
 	for ( int x = 0 ; x < values.length ; x++ ) {
 	    values[x] = fvalues[x];
@@ -48,13 +53,15 @@ public class DealOrNoDeal {
 	    cases.add(x,new Briefcase(x));
 	}
 
+	// shuffles the elements of values
 	shuffleValues();
 
 	// assigns value to each briefcase
 	for ( int x = 0 ; x < values.length ; x++ ) {
 	    ((Briefcase)cases.get(x)).setValue(values[x]);
 	}
-	
+
+	// sets up our three "characters"
 	you = new Player();
 	banker = new Dealer(you.getLuck());
 	caseholder = new CaseHolders(you.getLikability());
@@ -66,9 +73,11 @@ public class DealOrNoDeal {
     // shuffles the elements of values
     public void shuffleValues() {
 	int randomIndex;
+	
         for( int i = values.length - 1 ; i > 0 ; i-- ) {
 	    //pick an index at random
             randomIndex = (int)( (i+1) * Math.random() );
+	    
 	    //swap the values at position i and randomIndex
 	    int temp = values[i];
 	    values[i] = values[randomIndex];
@@ -78,10 +87,12 @@ public class DealOrNoDeal {
 
     // displays the game board
     public void displayBoard() {
+
+	// THE BRIEFCASES
+	
 	String s = "\n*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 	s += "\t\tBRIEFCASES\n";
         s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
-	// the cases
 
 	// puts case numbers in a 2d array (makes it easier to display neatly later)
 	int[][] d = new int[4][cases.size()/4]; // 4 rows
@@ -93,24 +104,22 @@ public class DealOrNoDeal {
 	    }
 	}
 
+	// displaying in the correct format
 	for ( int x = 0 ; x < d.length ; x++ ) {
 	    for ( int y = d[x].length - 1 ; y >= 0 ; y-- ) {
-		if ( ! ((Briefcase)cases.get(d[x][y])).isOpen() ) {
-		    // as long as the case is closed, it displays
+		if ( ! ((Briefcase)cases.get(d[x][y])).isOpen() ) { // if the briefcase is open, it displays
 		    s += d[x][y] + "\t";
 		}
-		else {
-		    // if the case is open, the space is blank
+		else { // if the briefcase is closed, it skips a space
 		    s += "\t";
 		}
 	    }
 	    s += "\n";
 	}
 
+	// THE VALUES
+
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
-
-	// the values
-
 	s += "\t\t$$$$$$$$\n";
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 
@@ -124,6 +133,7 @@ public class DealOrNoDeal {
 	    }
 	}
 
+	// displaying in the correct format
 	for ( int x = 0 ; x < t.length ; x++ ) {
 	    for ( int y = 0 ; y < t[x].length ; y++ ) {
 		if ( ! chosenValues.contains(t[x][y]) ) { // if not already chosen, displays value
@@ -137,20 +147,25 @@ public class DealOrNoDeal {
 	}
 
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
-	if ( you.getYourCase() != -1 ) {
+
+	// displaying your own case at the bottom
+	if ( you.getYourCase() != -1 ) { // as long as the user has chosen a case
 	    s += "\t\tYOUR CASE: " + you.getYourCase() + "\n";
 	}
-	
+
+	// and we're (finally) done!
 	System.out.println(s);
     }
 
-    // puts commas in appropriate place when printing numbers
+    // puts commas in appropriate place when printing numbers (for clarity)
     public static String commafy(int i) {
 	String s = "" + i;
-	if ( s.length() < 4 ){
+	
+	if ( s.length() < 4 ) { // no need to add commas
 	    return s;
 	}
-	else {
+	
+	else { // recursion yay
 	    return commafy(Integer.parseInt(s.substring(0, s.length() - 3))) + "," +         
 		s.substring(s.length() - 3, s.length());
 	}
@@ -160,7 +175,8 @@ public class DealOrNoDeal {
     public void waitSec() {
 	try {
 	    Thread.sleep(800); // 1000 milliseconds is one second
-	} catch(InterruptedException ex) {
+	}
+	catch(InterruptedException ex) {
 	    Thread.currentThread().interrupt();
 	}
     }
@@ -181,26 +197,29 @@ public class DealOrNoDeal {
     public void round(int r) {
 	if ( r == -1 ) { // the thrilling conclusion
 	    finalTwo();
-	    return;
+	    return; // no need to go through the rest of this method, as the game is over
 	}
 	
 	int choice;
         String s = "This round, you will be opening " + r + " case";
-	if ( r != 1 ) {
+	if ( r != 1 ) { // if more than one, case is plural
 	    s += "s.\n";
 	}
-	else {
+	else { // if only one, case is singular
 	    s += ".\n";
 	}
+	
 	System.out.println(s);
 	waitSec();
 	
-	while ( r != 0 ) {
+	while ( r != 0 ) { // while there are still more cases to choose (r is the amount of cases needed to be open)
 	    choice = you.pickCase(); // picks the case
 	    Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
-	    if ( b.isOpen() ) { // if already open
+	    
+	    if ( b.isOpen() ) { // if already open, the user cannot choose the case again
 		System.out.println("\nPlease choose a case not already chosen!\n");
 	    }
+	    
 	    else {
 		b.setOpen(true); // sets briefcase to open
 		int val = b.getValue();
@@ -209,18 +228,18 @@ public class DealOrNoDeal {
 		fiveHunna(val); // guess the value before showing what it is
 		
 		System.out.println("\nAMOUNT IN CASE: \n");
-		System.out.println("bum");
+		System.out.println("bum"); // suspense!
 		waitSec();
 		System.out.println("bum");
 		waitSec();
 		System.out.println("bum");
 		waitSec();
-		System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!~~~~~~~~~~*");
+		System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!~~~~~~~~~~*"); // shows the value
 		waitSec();	
-		System.out.println("\n" + caseholder.response(val));
+		System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
 		waitSec();
 
-		r -= 1;
+		r -= 1; // one less case to open
 		System.out.println("\nYou have " + r + " more briefcases to open!\n");
 		waitSec();
 		System.out.println("--------------------------------------------------------------------------");
@@ -242,16 +261,19 @@ public class DealOrNoDeal {
 	waitSec();
 	
 	choice = you.pickCase(); // picks the case
-
 	Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
-	if ( b.isOpen() && choice != you.getYourCase() ) {
+	
+	if ( b.isOpen() && choice != you.getYourCase() ) { // the chosen briefcase is already open (and not the user's case, which is open and choosable)
 	    System.out.println("\nUmm... Pick a valid case, please.\nLet's start this over...\n");
 	    waitSec();
 	    finalTwo();
 	}
-	else {
-	    finalAmount += b.getValue();
+	
+	else { // here we go...
+	    int val = b.getValue();
+	    finalAmount += val; // value added to amount user will win
 	    System.out.println("\n--------------------------------------------------------------------------");
+	    
 	    System.out.println("\nAnd the amount in the case is...\n");
 	    System.out.println("bum");
 	    waitSec();
@@ -259,11 +281,12 @@ public class DealOrNoDeal {
 	    waitSec();
 	    System.out.println("bum");
 	    waitSec();
-	    System.out.println("\n*~~~~~~~~~~$" + commafy(finalAmount) + "!!!!!~~~~~~~~~~*");
+	    System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!!!!!~~~~~~~~~~*"); // shows amount in case
 	    waitSec();
-	    System.out.println("\n" + caseholder.response(finalAmount));
+	    System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
 	    waitSec();
-	    end();
+	    
+	    end(); // the end of the game
 	    System.out.println("--------------------------------------------------------------------------");
 	}
     }
@@ -279,13 +302,14 @@ public class DealOrNoDeal {
 	waitSec();
 	System.out.println("...");
 	waitSec();
-	int d = banker.deal(chosenValues,values);
+	
+	int d = banker.deal(chosenValues,values); // the banker's offer
 	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
 	waitSec();
 	
-	if ( you.dealOrNoDeal().equals("deal") ) {
-	    finalAmount += d;
-	    end();
+	if ( you.dealOrNoDeal().equals("deal") ) { // if the user has made the deal
+	    finalAmount += d; // amount is added to amount user will win
+	    end(); // the end of the game
 	}
 	
 	System.out.println("--------------------------------------------------------------------------\n");
@@ -298,15 +322,16 @@ public class DealOrNoDeal {
 	System.out.println("--------------------------------------------------------------------------\n");
 	String ans = "";
 
-	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // to ensure a yes or no answer
 		
-	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(finalAmount)+ " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
+	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(finalAmount) + " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
+	    
 	    try {
 		ans = in.readLine();
 	    }
 	    catch ( IOException e ) {}
 
-	    if ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+	    if ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // so we can display an angry message
 		System.out.println("\nYes or no only, please.\n");
 	    }
 	}
@@ -355,7 +380,7 @@ public class DealOrNoDeal {
 	System.out.println("\nBefore we show you what's in the case... \nwould you like to guess what it contains?");
 	String ans = "";
 	
-	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) {
+	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // to ensure a yes or no answer
 	    System.out.println("\n(yes/no)\n");
 	    try {
 		ans = in.readLine();
@@ -366,8 +391,9 @@ public class DealOrNoDeal {
 	if ( ans.equals("yes") ) { // the player is taking a chance!
 	    int guess = 0;
 	    
-	    while ( guess == 0 ) {
+	    while ( guess == 0 ) { // to ensure a valid guess
 		System.out.println("\nGo ahead! Take a guess!\n");
+		
 		try {
 		    System.out.print("$");
 		    guess = Integer.parseInt(in.readLine());
@@ -377,7 +403,7 @@ public class DealOrNoDeal {
 		}
 		catch ( IOException e ) {}
 
-		if ( (! isValue(guess)) || (chosenValues.contains(guess)) ) {
+		if ( (! isValue(guess)) || (chosenValues.contains(guess)) ) { // so we can display an angry message
 		    System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
 		    guess = 0;
 		}
@@ -385,11 +411,11 @@ public class DealOrNoDeal {
 
 	    if ( guess == amount ) { // guess is correct
 		System.out.println("\nSomehow, that is correct! \n$500 has been added to your final balance. Great job!\n");
-		finalAmount += 500;
+		finalAmount += 500; // $500 added to user's final amount
 	    }
 	    else { // guess is incorrect
 		System.out.println("\nSorry, but that is incorrect. \n$500 has been subtracted from your final balance. Better luck next time!");
-		finalAmount -= 500;
+		finalAmount -= 500; // $500 subtracted from user's final amount
 	    }
 	}
 	
@@ -404,6 +430,7 @@ public class DealOrNoDeal {
     public void end() {
 	box24();
 	gameOver = true;
+	
 	System.out.println("--------------------------------------------------------------------------");
 	System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(finalAmount) + "!!!!!!!");
 	System.out.println("\nThanks for playing!\n");
@@ -412,23 +439,25 @@ public class DealOrNoDeal {
     // time to play!
     public void play() {
 
-	// for new players
+	// so new players can choose to view the rules
 	you.rules();
 
 	// choosing your case
 	displayBoard();
 	you.setYourCase();
-	((Briefcase)cases.get(you.getYourCase())).setOpen(true);
+	((Briefcase)cases.get(you.getYourCase())).setOpen(true); // sets your case to open (for displaying purposes)
 
 	// round time!
 	for ( int r : roundOrder ) {
-	    if ( ! gameOver ) {
+	    
+	    if ( ! gameOver ) { // as long as the game isn't over
 		displayBoard();
 		round(r);
 		if ( r != -1 ) { // so a deal will not happen in the final round
 		    deal();
 		}
 	    }
+	    
 	}
 
     }

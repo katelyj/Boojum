@@ -5,7 +5,8 @@
 public class CaseHolders {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-    
+
+    private int likability;
     private String[] posResponse;
     private String[] negResponse;
     private String[] regResponse;
@@ -14,7 +15,6 @@ public class CaseHolders {
     private String[] unlikePos; // alternate pos for unlikable people
     private String[] unlikeNeg; // alternate neg for unlikable people
     private String[] insults; // for players who are just duds
-    private int likability;
 
     // ~~~~~~~~~~~ CONSTRUCTORS ~~~~~~~~~~~
 
@@ -48,44 +48,44 @@ public class CaseHolders {
     // generates the response
     public String response(int brief) {
 	
-	if ( likability == 1 ) { // if the player is likable
-	    if ( brief < 50000 ) {
+	if ( likability == 1 ) { // if the player is likable, CaseHolders is rooting for them!
+	    if ( brief < 50000 ) { // they got lucky!
 		double prob = Math.random();
 		int pos = (int)(prob * likePos.length);
 		return likePos[pos];
 	    }
-	    else {
+	    else { // they did not get lucky :(
 		double prob = Math.random();
 		int pos = (int)(prob * likeNeg.length);
 		return likeNeg[pos];
 	    }
 	}
 	
-	else if ( likability == -1 ) { // if the player is unlikable
-	    if ( brief < 50000 ) {
+	else if ( likability == -1 ) { // if the player is unlikable, Caseholders is not rooting for them...
+	    if ( brief < 50000 ) { // they got lucky!
 		double prob = Math.random();
 		int pos = (int)(prob * unlikePos.length);
 		return unlikePos[pos];
 	    }
-	    else {
+	    else { // they did not get lucky :(
 		double prob = Math.random();
 		int pos = (int)(prob * unlikeNeg.length);
 		return unlikeNeg[pos];
 	    }
 	}
 	
-	else { // if the player is neutral
-	    if ( brief > 50000 ) {
+	else { // if the player is neutral, whatever
+	    if ( brief > 50000 ) { // they got lucky!
 		double prob = Math.random();
 		int pos = (int)(prob * negResponse.length);
 		return negResponse[pos];
 	    }
-	    else if (brief > 500) {
+	    else if (brief > 500) { // they did okay (no preference either way)
 		double prob = Math.random();
 		int pos = (int)(prob * regResponse.length);
 		return regResponse[pos];
 	    }
-	    else {
+	    else { // they did not get lucky :(
 		double prob = Math.random();
 		int pos = (int)(prob * posResponse.length);
 		return posResponse[pos];

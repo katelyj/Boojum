@@ -49,3 +49,6 @@ Kate edited her code after, and changed the formatting of the game setup a bit. 
 
 2016-01-22
 More animation work. That's basically it...
+
+2016-01-23
+Kate added appropriate comments to all our classes and methods so other people can read our code and understand what's going on.

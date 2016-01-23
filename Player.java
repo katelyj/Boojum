@@ -24,6 +24,7 @@ public class Player {
     public Player() {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
+	
 	ani = new Animation("wave");
 	luck = 1;
 	likability = 0;
@@ -54,7 +55,7 @@ public class Player {
     // sets mode
     public void inputMode() {
 	int n = 0;
-	while ( n == 0 ) {
+	while ( n == 0 ) { // to ensure that the user inputs a valid mode before continuing
      
 	    System.out.println("\nPlease type 1 if you would like to be a regular player." +
 			       "\nPlease type 2 if you would like to be a likable player, but unlucky." +
@@ -67,6 +68,11 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
+
+	    if ( n != 1 && n != 2 && n != 3 ) { // the user has not inputted a valid mode
+		System.out.println("\nUm, no.");
+		n = 0;
+	    }
      
 	}
  
@@ -78,36 +84,35 @@ public class Player {
 	    setLikability(1);
 	    System.out.println("\nCongrats, you are a likable person!\n");
 	}
-	else if ( n == 3 ) {
+	else {
 	    setLuck(1.1);
 	    setLikability(-1);
 	    System.out.println("\nCongrats, you are a lucky person!\n");
-	}
-	else {
-	    System.out.println("\nUm, no.");
-	    inputMode();
 	}
     }
 
     // for new players who don't know what's up
     public void rules() {
-	String b = "";
 	System.out.println("Before we begin, do you know how to play? (yes/no)\n");
-	while ( (! b.equals("yes")) && (! b.equals("no")) ) {
+	String b = "";
+	
+	while ( (! b.equals("yes")) && (! b.equals("no")) ) { // to ensure a yes or no answer, only
 	    try {
 		b = in.readLine();
 	    }
 	    catch ( IOException e ) {}
-	    if ( (! b.equals("yes")) && (! b.equals("no")) ) {
+	    
+	    if ( (! b.equals("yes")) && (! b.equals("no")) ) { // so we can print an angry message!
 		System.out.println("\nPlease choose yes or no!\n");
 	    }
 	}
-	if ( b.equals("no") ) {
+	
+	if ( b.equals("no") ) { // the user is clueless
 	    System.out.println(rules);
 	    try { in.readLine(); }
 	    catch ( IOException e ) {}
 	}
-	else {
+	else { // the user is a smart cookie
 	    System.out.println("\nGreat! Now let's begin...");
 	}
     }
@@ -115,7 +120,7 @@ public class Player {
     // picking your case
     public int pickCase() {
 	int c = -1;
-	while ( c < 0 || c > 24 ) {
+	while ( c < 0 || c > 23 ) { // to ensure valid numbers
 	    System.out.println("Pick a case to open...\n");
 	    try {
 		c = Integer.parseInt(in.readLine());
@@ -124,7 +129,8 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
-	    if ( c < 0 || c > 23 ) {
+	    
+	    if ( c < 0 || c > 23 ) { // so we can print an angry message!
 		System.out.println("\nPick a valid case, please.\n");
 	    }
 	}
@@ -133,7 +139,7 @@ public class Player {
 
     // mutator for yourCase
     public void setYourCase() {
-	while ( yourCase < 0 || yourCase > 24 ) {
+	while ( yourCase < 0 || yourCase > 23 ) { // to ensure valid numbers
 	    System.out.println("Choose a briefcase to be your own.\nBe wary. This case will stick with you throughout your time here...\n");
 	    try {
 		yourCase = Integer.parseInt(in.readLine());
@@ -142,7 +148,8 @@ public class Player {
 		System.out.println("\nThat doesn't look like a number.");
 	    }
 	    catch ( IOException e ) {}
-	    if ( yourCase < 0 || yourCase > 23 ) {
+	    
+	    if ( yourCase < 0 || yourCase > 23 ) { // so we can print an angry message!
 		System.out.println("\nPick a valid case, please.\n");
 	    }
 	}
@@ -158,14 +165,14 @@ public class Player {
 	}
 	catch ( IOException e ) {}
 
-	if ( n.equals("deal") ) {
+	if ( n.equals("deal") ) { // the user has accepted the deal
 	    return n;
 	}
-	else if ( n.equals("no deal") ) {
+	else if ( n.equals("no deal") ) { // the user has not accepted the deal
 	    System.out.println("\nAnd the game continues on!\n");
 	    return n;
 	}
-	else {
+	else { // the user is dumb
 	    System.out.println("\nUhh... let's try that again, shall we?");
 	    return dealOrNoDeal();
 	}
