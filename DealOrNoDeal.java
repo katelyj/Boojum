@@ -404,8 +404,10 @@ public class DealOrNoDeal {
 		catch ( IOException e ) {}
 
 		if ( (! isValue(guess)) || (chosenValues.contains(guess)) ) { // so we can display an angry message
-		    System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
-		    guess = 0;
+		    if ( guess != amount ) { // because amount is in chosenValues, so the if statement won't account for that
+			System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
+			guess = 0;
+		    }
 		}
 	    }
 
