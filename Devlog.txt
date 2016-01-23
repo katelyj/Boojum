@@ -1,0 +1,51 @@
+Kate and Bayle's Devlog
+
+2016-01-13
+Today was the start of our project devlog.
+After Kate had her vision that came to her in a dream, we discussed our new project plan, drawing diagrams and flowcharts and all of that neat stuff.
+Then, after getting Mr. Brown's seal of approval, we began to make the basic structures for our classes.
+We also created the driver file, DealOrNoDeal.java, and wrote some basic contents.
+Tomorrow, we will further develop Briefcase and Player, our two most important classes at the moment.
+We will also discuss the relationships between all our prospective classes.
+RIP David Bowie.
+
+2016-01-14
+We worked on displaying the game board.
+We also made to-do.txt, a UML diagram, and a flowchart.
+In class, we worked on choosing your initial briefcase.
+At home, we worked on the progression of the same (choosing briefcases and all that fun stuff). 
+We now have a very basic layout of our game coded.
+RIP Alan Rickman.
+
+2016-01-15
+Today was a very productive day. In class, Bayle worked on starting the Dealer class while Kate wrote the very end of the game: the finalTwo method.
+Then, at home, Kate edited the Dealer class to make it work with the driver class, and implemented it at its appropriate places.
+Our game now runs how it should, at its bare minimum.
+Next up to work on is class CaseHolder, and then possibly the superclass for all our characters.
+
+2016-01-16
+Kate worked on printing the numbers with their proper commas.
+
+2016-01-16/17
+Bayle created the CaseHolders and their helpful responses and she implemented it in the driver class so that after each case opening, there would be a response. 
+Also, before the dealer was only offering $0; Bayle set them straight.
+Kate edited CaseHolders and expanded it more, adding more possibilities for responses and changing minor algorithmic things.
+
+
+2016-01-19
+In class, Kate created the (very simple) driver file, for the sake of clenliness.
+At home, we both worked on implementing the Box 24 method.
+
+2016-01-20
+In class, Mr. Brown finally read our email about having a new Github repository.
+Then, Bayle and Kate worked on creating another alternate ending, where a user can guess what in in their briefcase to gain (or lose) an additional $500.
+Kate finished it at home, and added necessary helper methods.
+
+2016-01-21
+In class, we worked on some cool fancy animation thing that makes our display prettier. 
+But that is still a work in progress as we are not sure what exactly to do with it.
+When we got home, Bayle implemented the doggy animation.
+Kate edited her code after, and changed the formatting of the game setup a bit. She also modified the end of the game a bit aesthetically, but nothing major.
+
+2016-01-22
+More animation work. That's basically it...
