@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DealOrNoDeal extends Values implements Waiter  {
 
-    // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
+    // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~ 
    
     private InputStreamReader isr;
     private BufferedReader in;
