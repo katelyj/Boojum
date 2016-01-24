@@ -5,7 +5,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Player {
+public class Player implements Lucky{
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
   

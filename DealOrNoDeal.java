@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
 
-public class DealOrNoDeal {
+public class DealOrNoDeal extends Values implements Waiter  {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
    
@@ -22,29 +22,26 @@ public class DealOrNoDeal {
     private int finalAmount;
     
     private ArrayList cases;
-    private ArrayList chosenValues;
     private int[] values;
-    private final int[] fvalues = {1,5,10,15,25,50,75,
-			    100,200,500,750,1000,5000,10000,25000,50000,75000,
-			    100000,200000,300000,400000,500000,750000,1000000};
     private final int[] roundOrder = {6,6,4,4,1,1,-1}; // -1 indicates round for final 2 cases
 
     
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
+        super();
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
 	
 	gameOver = false;
 	finalAmount = 0;
-	chosenValues = new ArrayList<Integer>();
+	choVals = new ArrayList<Integer>();
 
-	// sets up values array (not ArrayList so it can match up with fvalues)
+	// sets up values array (not ArrayList so it can match up with fValues)
 	// and also it's easier to use arrays for mathematical purposes (you have ints instead of Integers)
-	values = new int[fvalues.length];
+	values = new int[fValues.length];
 	for ( int x = 0 ; x < values.length ; x++ ) {
-	    values[x] = fvalues[x];
+	    values[x] = fValues[x];
 	}
 
 	// sets up arrayList of briefcases
@@ -124,11 +121,11 @@ public class DealOrNoDeal {
 	s += "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\n";
 
 	// puts values in a 2d array (makes it easier to display neatly later)
-	int[][] t = new int[4][fvalues.length/4]; // 4 rows
+	int[][] t = new int[4][fValues.length/4]; // 4 rows
 	int count1 = 0;
 	for ( int x = 0 ; x < t.length ; x++ ) {
 	    for ( int y = 0 ; y < t[x].length ; y++ ) {
-		t[x][y] = fvalues[count1];
+		t[x][y] = fValues[count1];
 		count1 += 1;
 	    }
 	}
@@ -136,7 +133,7 @@ public class DealOrNoDeal {
 	// displaying in the correct format
 	for ( int x = 0 ; x < t.length ; x++ ) {
 	    for ( int y = 0 ; y < t[x].length ; y++ ) {
-		if ( ! chosenValues.contains(t[x][y]) ) { // if not already chosen, displays value
+		if ( ! choVals.contains(t[x][y]) ) { // if not already chosen, displays value
 		    s += commafy(t[x][y]) + "\t";
 		}
 		else { // if already chosen, leaves space blank
@@ -172,7 +169,7 @@ public class DealOrNoDeal {
     }
     
     // waits four fifths of a second (the name is misleading, we know)
-    public void waitSec() {
+    public void waits() {
 	try {
 	    Thread.sleep(800); // 1000 milliseconds is one second
 	}
@@ -210,7 +207,7 @@ public class DealOrNoDeal {
 	}
 	
 	System.out.println(s);
-	waitSec();
+	waits();
 	
 	while ( r != 0 ) { // while there are still more cases to choose (r is the amount of cases needed to be open)
 	    choice = you.pickCase(); // picks the case
@@ -223,25 +220,25 @@ public class DealOrNoDeal {
 	    else {
 		b.setOpen(true); // sets briefcase to open
 		int val = b.getValue();
-		chosenValues.add(val); // adds value to chosenValues
+		choVals.add(val); // adds value to choVals
 
 		fiveHunna(val); // guess the value before showing what it is
 		
 		System.out.println("\nAMOUNT IN CASE: \n");
 		System.out.println("bum"); // suspense!
-		waitSec();
+		waits();
 		System.out.println("bum");
-		waitSec();
+		waits();
 		System.out.println("bum");
-		waitSec();
+		waits();
 		System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!~~~~~~~~~~*"); // shows the value
-		waitSec();	
+		waits();	
 		System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
-		waitSec();
+		waits();
 
 		r -= 1; // one less case to open
 		System.out.println("\nYou have " + r + " more briefcases to open!\n");
-		waitSec();
+		waits();
 		System.out.println("--------------------------------------------------------------------------");
 
 		displayBoard();
@@ -254,18 +251,18 @@ public class DealOrNoDeal {
 	int choice;
 
 	System.out.println("Only two briefcases remain.\n");
-	waitSec();
+	waits();
 	System.out.println("Will you choose to open your own case (case " + you.getYourCase() + "), or the one remaining on the board?\n");
-	waitSec();
+	waits();
 	System.out.println("Choose wisely. The amount in the case you choose will contain the amount of money you win.\n");
-	waitSec();
+	waits();
 	
 	choice = you.pickCase(); // picks the case
 	Briefcase b = ((Briefcase)cases.get(choice)); // for clenliness
 	
 	if ( b.isOpen() && choice != you.getYourCase() ) { // the chosen briefcase is already open (and not the user's case, which is open and choosable)
 	    System.out.println("\nUmm... Pick a valid case, please.\nLet's start this over...\n");
-	    waitSec();
+	    waits();
 	    finalTwo();
 	}
 	
@@ -276,15 +273,15 @@ public class DealOrNoDeal {
 	    
 	    System.out.println("\nAnd the amount in the case is...\n");
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 	    System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!!!!!~~~~~~~~~~*"); // shows amount in case
-	    waitSec();
+	    waits();
 	    System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
-	    waitSec();
+	    waits();
 	    
 	    end(); // the end of the game
 	    System.out.println("--------------------------------------------------------------------------");
@@ -294,18 +291,18 @@ public class DealOrNoDeal {
     // the banker's time to shine!
     public void deal() {
 	System.out.println("It's time for a deal.\n");
-	waitSec();
+	waits();
 	System.out.println("Please wait while the banker is calculating...\n");
 	System.out.println("...");
-	waitSec();
+	waits();
 	System.out.println("...");
-	waitSec();
+	waits();
 	System.out.println("...");
-	waitSec();
+	waits();
 	
-	int d = banker.deal(chosenValues,values); // the banker's offer
+	int d = banker.deal(choVals,values); // the banker's offer
 	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
-	waitSec();
+	waits();
 	
 	if ( you.dealOrNoDeal().equals("deal") ) { // if the user has made the deal
 	    finalAmount += d; // amount is added to amount user will win
@@ -339,11 +336,11 @@ public class DealOrNoDeal {
 	if ( ans.equals("yes") ) { // the user has taken this chance
 	    System.out.println("\nHere we go...\n");
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 	    System.out.println("bum");
-	    waitSec();
+	    waits();
 
 	    double prob = Math.random();
 	    if ( prob > .8 ) { // user has won double their money
@@ -372,7 +369,7 @@ public class DealOrNoDeal {
 	    System.out.println("Alrighty then.\n");
 	}
 
-	waitSec();
+	waits();
     }
 
     // guess what's in the case to win (or lose) $500!
@@ -403,8 +400,8 @@ public class DealOrNoDeal {
 		}
 		catch ( IOException e ) {}
 
-		if ( (! isValue(guess)) || (chosenValues.contains(guess)) ) { // so we can display an angry message
-		    if ( guess != amount ) { // because amount is in chosenValues, so the if statement won't account for that
+		if ( (! isValue(guess)) || (choVals.contains(guess)) ) { // so we can display an angry message
+		    if ( guess != amount ) { // because amount is in choVals, so the if statement won't account for that
 			System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
 			guess = 0;
 		    }
@@ -425,7 +422,7 @@ public class DealOrNoDeal {
 	    System.out.println("\n" + caseholder.insult());
 	}
 
-	waitSec();
+	waits();
     }
 
     // the true end of the game

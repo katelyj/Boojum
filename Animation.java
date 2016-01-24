@@ -2,7 +2,7 @@
   class Animation -- A cute lil dog for all your aesthetic pleasures!
   =============================================*/
 
-public class Animation {
+public class Animation implements Waiter {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
     

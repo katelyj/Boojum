@@ -4,20 +4,20 @@
 
 import java.util.ArrayList;
 
-public class Dealer {
+public class Dealer extends Values implements Lucky {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
     
     private double luck;
-    private int totVals;
     private int totBrief;
     private int leftVals;
-    private int choVals;
+    private int SumChoVals;
 
 
      // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public Dealer (double l) {
+	super();
 	luck = l;
 	// we do not set all the other variables here because they will change with each deal!
     }
@@ -25,21 +25,21 @@ public class Dealer {
     
     // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~
 
-    // sets the values of totVals, leftVals, and choVals
-    public void setVals(ArrayList c, int[] v) {
-	choVals = 0;
-	totVals = 0;
-    	totBrief = v.length - c.size(); // number of briefcasees that are still closed
+    // sets the values of totVals, leftVals, and sumChoVals
+    public void setVals(ArrayList c) {
+	int sumChoVals = 0;
+	int totVals = 0;
+    	totBrief = fValues.length - c.size(); // number of briefcasees that are still closed
 	
 	for ( int i = 0 ; i < c.size() ; i++ ) {
-	    choVals += (int)c.get(i); // sum of all of the open briefcases
+	    sumChoVals += (int)c.get(i); // sum of all of the open briefcases
 	}
 	
-	for ( int i = 0 ; i < v.length ; i++ ) {
-	    totVals += v[i]; // sum of all of the values (ever)
+	for ( int i = 0 ; i < fValues.length ; i++ ) {
+	    totVals += fValues[i]; // sum of all of the values (ever)
 	}
 	
-	leftVals = totVals - choVals;
+	leftVals = totVals - sumChoVals;
 	
         // difference between values that were opened and all the values, leaving you with only the values of briefcases that weren't opened
     }
@@ -47,11 +47,14 @@ public class Dealer {
     // returns the deal delt by the dealer
     public int deal(ArrayList chosenValues, int[] values) {
 	
-	setVals(chosenValues,values); // sets values properly
-	int mean = leftVals / totBrief; // average of totVals in briefcases not opened
+	setVals(chosenValues); // sets values properly
+	int mean = leftVals / totBrief; // average of fValues in briefcases not opened
 	
 	return (int)(luck * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
 	
+    }
+    public double getLuck(){
+	return luck;
     }
     
 } // end class Dealer
