@@ -33,7 +33,8 @@ public class Dealer extends Values implements Lucky {
 
     // sets the values of totVals, leftVals, and sumChoVals
     public void setVals(ArrayList c) {
-	
+
+	sum = 0;
     	totBrief = fValues.length - c.size(); // number of briefcasees that are still closed
 	
 	for ( int i = 0 ; i < fValues.length ; i++ ) {
@@ -51,7 +52,7 @@ public class Dealer extends Values implements Lucky {
 	
 	setVals(chosenValues); // sets values properly
 	
-	double mean = sum / totBrief; // average of fValues in briefcases not opened
+	double mean = sum / totBrief;
 	mean = Math.sqrt(mean); // to calculate the geometric average
 	
 	return (int)(getLuck() * mean);
