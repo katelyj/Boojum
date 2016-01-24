@@ -181,7 +181,7 @@ public class Player implements Lucky {
     }
        
     // accessor for case
-    public int getYourCase(){
+    public int getYourCase() {
 	return yourCase;
     }
 

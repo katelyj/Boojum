@@ -237,7 +237,15 @@ public class DealOrNoDeal extends Values implements Waiter  {
 		waits();
 
 		r -= 1; // one less case to open
-		System.out.println("\nYou have " + r + " more briefcases to open!\n");
+		System.out.println("\nYou have " + r + " more briefcase");
+		
+		if ( r == 1 ) { // briefcase should be singular
+		    System.out.print(" to open!\n");
+		}
+		else { // briefcase should be plural
+		    System.out.print("s to open!\n");
+		}
+		
 		waits();
 		System.out.println("--------------------------------------------------------------------------");
 
@@ -280,8 +288,6 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	    waits();
 	    System.out.println("\n*~~~~~~~~~~$" + commafy(val) + "!!!!!~~~~~~~~~~*"); // shows amount in case
 	    waits();
-	    System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
-	    waits();
 	    
 	    end(); // the end of the game
 	    System.out.println("--------------------------------------------------------------------------");
@@ -302,6 +308,8 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	
 	int d = banker.deal(choVals); // the banker's offer
 	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
+	waits();
+	System.out.println("\nIf you accept this amount as your winnings, the game will end, and you will never know what was in your own briefcase.");
 	waits();
 	
 	if ( you.dealOrNoDeal().equals("deal") ) { // if the user has made the deal
@@ -409,7 +417,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	    }
 
 	    if ( guess == amount ) { // guess is correct
-		System.out.println("\nSomehow, that is correct! \n$500 has been added to your final balance. Great job!\n");
+		System.out.println("\nSomehow, that is correct! \n$500 has been added to your final balance. Great job!");
 		finalAmount += 500; // $500 added to user's final amount
 	    }
 	    else { // guess is incorrect
@@ -427,12 +435,22 @@ public class DealOrNoDeal extends Values implements Waiter  {
 
     // the true end of the game
     public void end() {
-	box24();
+
+	if ( finalAmount < 0 ) { // the user has won negative money
+	    finalAmount = 0; // we are not that mean
+	}
+	
+	box24(); // the final chance the user can take
 	gameOver = true;
 	
 	System.out.println("--------------------------------------------------------------------------");
-	System.out.println("\nCONGRATULATIONS!!!!!\n\nYOU JUST WON $" + commafy(finalAmount) + "!!!!!!!");
-	System.out.println("\nThanks for playing!\n");
+	
+	System.out.println("\nCONGRATULATIONS, " + you.getName() +
+			   "!!!!!\n\nYOU JUST WON $" + commafy(finalAmount) + "!!!!!!!"); // how much you just won
+	
+	System.out.println(caseholder.finalResponse(finalAmount)); // shows an appropriate response
+	System.out.println("\nThanks for playing!\n"); // thanks for putting up with us!
+	
     }
     
     // time to play!

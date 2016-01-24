@@ -100,5 +100,10 @@ public class CaseHolders {
 	int pos = (int)(prob * insults.length);
 	return insults[pos];
     }
+
+    // the response at the very end
+    public String finalResponse(int val) {
+	return "";
+    }
     
 } // end class CaseHolders
