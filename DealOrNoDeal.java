@@ -448,7 +448,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	System.out.println("\nCONGRATULATIONS, " + you.getName() +
 			   "!!!!!\n\nYOU JUST WON $" + commafy(finalAmount) + "!!!!!!!"); // how much you just won
 	
-	System.out.println(caseholder.finalResponse(finalAmount)); // shows an appropriate response
+	System.out.println("\n" + caseholder.finalResponse(finalAmount)); // shows an appropriate response
 	System.out.println("\nThanks for playing!\n"); // thanks for putting up with us!
 	
     }

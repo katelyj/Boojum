@@ -103,7 +103,29 @@ public class CaseHolders {
 
     // the response at the very end
     public String finalResponse(int val) {
-	return "";
+
+	if ( val == 1000000 ) { // the user has won $1,000,000!
+	    return "Oh, my! That's absolutely amazing! Tell me your secrets?";
+	}
+	else if ( val > 75000 ) { // the user did really well
+	    return "You did amazingly. You should, like, enter the lottery or something!";
+	}
+	else if ( val > 1000 ) { // the user did pretty well
+	    return "Wow, you did pretty well! You should be very proud!";
+	}
+	else if ( val > 100 ) { // the user did decently
+	    return "You did alright! Maybe play again?";
+	}
+	else if ( val > 10 ) { // the user did pretty badly
+	    return "Wow, that's pretty bad. You probably shouldn't enter the lottery...";
+	}
+	else if ( val > 0 ) { // ouch
+	    return "Ouch. Better luck next time.";
+	}
+	else { // the user has won $0
+	    return "That's just sad...";
+	}
+	
     }
     
 } // end class CaseHolders
