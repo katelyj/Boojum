@@ -1,6 +1,6 @@
 /*=============================================
   class Driver -- Driver file for Kate and Bayle's FINAL PROJECT!
-  Required classes: DealOrNoDeal, Player, Dealer, Caseholders, Briefcase, Animation
+  Required classes: DealOrNoDeal, Player, Dealer, Caseholders, Briefcase, Animation, Lucky, Values, Waiter
   =============================================*/
 
 public class Driver {

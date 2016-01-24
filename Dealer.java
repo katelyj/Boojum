@@ -45,15 +45,17 @@ public class Dealer extends Values implements Lucky {
     }
 
     // returns the deal delt by the dealer
-    public int deal(ArrayList chosenValues, int[] values) {
+    public int deal(ArrayList chosenValues) {
 	
 	setVals(chosenValues); // sets values properly
 	int mean = leftVals / totBrief; // average of fValues in briefcases not opened
 	
-	return (int)(luck * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
+	return (int)(getLuck() * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
 	
     }
-    public double getLuck(){
+
+    // accessor for luck
+    public double getLuck() {
 	return luck;
     }
     

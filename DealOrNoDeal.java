@@ -1,6 +1,6 @@
 /*=============================================
   class DealOrNoDeal -- The main functionality of the game!
-  Required classes: Player, Dealer, Caseholders, Briefcase, Animation
+  Required classes: Player, Dealer, Caseholders, Briefcase, Animation, Values, Waiter, Lucky
   =============================================*/
 
 import java.io.*;
@@ -300,7 +300,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	System.out.println("...");
 	waits();
 	
-	int d = banker.deal(choVals,values); // the banker's offer
+	int d = banker.deal(choVals); // the banker's offer
 	System.out.println("\nBANKER'S OFFER: $" + commafy(d) + "!");
 	waits();
 	
