@@ -58,15 +58,15 @@ public class Dealer extends Values implements Lucky {
 	mean = Math.sqrt(mean); // to calculate the geometric mean
 	
 	Random rand = new Random();
-	double  scale = 0;
+	double scale = 0;
 	
-	if ( getLuck().equals("lucky") ) {
-	    scale = ((double)(rand.nextDouble() * .4)) + .9; // .9 to 1.3
-	}
-	else if ( getLuck().equals("neither") ) {
+	if ( getLuck().equals("lucky") ) { // the player is lucky
 	    scale = ((double)(rand.nextDouble() * .5)) + .75; // .75 to 1.25
 	}
-	else {
+	else if ( getLuck().equals("neither") ) { // the player is neutral
+	    scale = ((double)(rand.nextDouble() * .5)) + .70; // .70 to 1.20
+	}
+	else { // the player is unlucky
 	    scale = ((double)(rand.nextDouble() * .5)) + .65; // .65 to 1.15
 	}
 	
