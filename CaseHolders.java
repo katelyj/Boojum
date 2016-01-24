@@ -122,7 +122,7 @@ public class CaseHolders {
 	else if ( val > 0 ) { // ouch
 	    return "Ouch. Better luck next time.";
 	}
-	else { // the user has won $0
+	else { // the user has won $0 (or less?)
 	    return "That's just sad...";
 	}
 	

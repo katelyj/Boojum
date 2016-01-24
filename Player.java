@@ -78,13 +78,13 @@ public class Player implements Lucky, Waiter {
 	    waits();
 	}
 	else if ( n == 2 ) {
-	    setLuck("false");
+	    setLuck("unlucky");
 	    setLikability(1);
 	    System.out.println("\nCongrats, you are a likable person!\n");
 	    waits();
 	}
 	else {
-	    setLuck("true");
+	    setLuck("lucky");
 	    setLikability(-1);
 	    System.out.println("\nCongrats, you are a lucky person!\n");
 	    waits();

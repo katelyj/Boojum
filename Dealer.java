@@ -18,6 +18,7 @@ public class Dealer extends Values implements Lucky {
      // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public Dealer (String l) {
+	super(); //gets fvalues
 	luck = l;
 	valsSquared = new double[fValues.length];
 
@@ -55,17 +56,20 @@ public class Dealer extends Values implements Lucky {
 	
 	double mean = sum / totBrief;
 	mean = Math.sqrt(mean); // to calculate the geometric mean
+	
 	Random rand = new Random();
 	double  scale = 0;
-	if (getLuck().equals("true")){
-	    scale = ((double)(rand.nextDouble() * .4))+ .9; //.9 to 1.3
+	
+	if ( getLuck().equals("lucky") ) {
+	    scale = ((double)(rand.nextDouble() * .4)) + .9; // .9 to 1.3
 	}
-	else if (getLuck().equals("neither")){
-	    scale = ((double)(rand.nextDouble() * .5))+ .75;//.75 to 1.25
+	else if ( getLuck().equals("neither") ) {
+	    scale = ((double)(rand.nextDouble() * .5)) + .75; // .75 to 1.25
 	}
 	else {
-	    scale = ((double)(rand.nextDouble() * .5))+ .65;//.65 to 1.15
+	    scale = ((double)(rand.nextDouble() * .5)) + .65; // .65 to 1.15
 	}
+	
 	return (int)(mean * scale);
 	// lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
 	

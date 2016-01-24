@@ -7,5 +7,5 @@ So if some of the graphs look like she did no work, that is incorrect, as she di
 
 To launch:
 
-$ javac Driver.java
+$ javac *java
 $ java Driver

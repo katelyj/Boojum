@@ -60,3 +60,9 @@ Kate also changed the way Dealer calculates the amount to offer. Instead of offe
 There was an error in calculating this, and it went undetected for a while, but Kate eventually figured it out while having her mom test the game, and was able to fix it.
 Bayle made it so that the deal is not always exactly the geometric mean (to make some variety and smart riskiness with the deals).
 Bayle made a file explining how you can use inside knowledge about how the deal is made to better understand whether to accept it or not.
+
+2016-01-24
+The day of final touches!
+Kate edited minor aesthetic stuff.
+There's not much left to do (or anything, really).
+We done good.

@@ -1,3 +1,10 @@
 Optimized strategy:
-The values that are found in each of the briefcases are random each time. Therefore, there is no way for you to be "smart" with choosing briefcases. However, the basic deal is the geometric mean (add up the squares, divide by number of items, take the square root) of the values the unknown cases contain. For a regular person, the deal is between 75% and 125% of the geometric mean. For a lucky person, the deal is between 90% and 130% of the geometric mean. For a regular person, the deal is between 65% and 115% of the geometric mean. If the deal that you receive is below the geometric mean of the remaining values, you should not accept, but if it is near the high end of the range for deals (based on the type of person you are and the geometric mean), you should accept the deal.
+The values that are found in each of the briefcases are random each time. 
+Therefore, there is no way for you to be "smart" with choosing briefcases. 
+However, the basic deal is the geometric mean (add up the squares, divide by number of items, take the square root) of the values the unknown cases contain. 
+For a regular person, the deal is between 75% and 125% of the geometric mean. 
+For a lucky person, the deal is between 90% and 130% of the geometric mean. 
+For a regular person, the deal is between 65% and 115% of the geometric mean. 
+If the deal that you receive is below the geometric mean of the remaining values, you should not accept.
+But if it is near the high end of the range for deals (based on the type of person you are and the geometric mean), you should accept the deal.
 Also, play riskely!!!! Otherwise, you can never win that $1,000,000!
