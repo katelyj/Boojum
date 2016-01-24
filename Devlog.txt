@@ -55,5 +55,7 @@ Kate added appropriate comments to all our classes and methods so other people c
 Kate also caught and fixed some bugs after having her entire family test out the game, which was good.
 She fixed the error that came with winning a negative amount of money. Now, winning a negative amount will not break the game.
 She also fixed up the messages displayed upon winning the game, as before they were backwards (The lower you won, the more positive the comment was! That's no good!).
-Bayle worked on creating some interfaces and superclasses, to spice things up and add a sense of inheritance to our game. Then, after the made them work, Kate edited these new classes slightly, to make them fit in better.
+Bayle worked on creating some interfaces and superclasses, to spice things up and add a sense of inheritance to our game. Then, after the made them work, Kate edited these new classes to make them fit in better.
 Kate also changed the way Dealer calculates the amount to offer. Instead of offering the mean, she made it offer the geometric mean. This basically involved rewriting the entire class, but now it gives wayyy better offers.
+There was an error in calculating this, and it went undetected for a while, but Kate eventually figured it out while having her mom test the game, and was able to fix it.
+Are we done now?
