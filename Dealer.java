@@ -7,18 +7,24 @@ import java.util.ArrayList;
 public class Dealer extends Values implements Lucky {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-    
-    private double luck;
+
     private int totBrief;
-    private int leftVals;
-    private int SumChoVals;
+    private double luck;
+    private double sum;
+    private double[] valsSquared;
 
 
      // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public Dealer (double l) {
-	super();
 	luck = l;
+	valsSquared = new double[fValues.length];
+
+	// creates valsSquared -- all the values, but squared
+	for ( int v = 0 ; v < valsSquared.length ; v++ ) {
+	    valsSquared[v] = Math.pow(fValues[v],2); // corresponding number, but squared
+	}
+	
 	// we do not set all the other variables here because they will change with each deal!
     }
 
@@ -27,30 +33,29 @@ public class Dealer extends Values implements Lucky {
 
     // sets the values of totVals, leftVals, and sumChoVals
     public void setVals(ArrayList c) {
-	int sumChoVals = 0;
-	int totVals = 0;
+	
     	totBrief = fValues.length - c.size(); // number of briefcasees that are still closed
 	
-	for ( int i = 0 ; i < c.size() ; i++ ) {
-	    sumChoVals += (int)c.get(i); // sum of all of the open briefcases
-	}
-	
 	for ( int i = 0 ; i < fValues.length ; i++ ) {
-	    totVals += fValues[i]; // sum of all of the values (ever)
+	    
+	    if ( ! c.contains(fValues[i]) ) { // the value is not in c (chosen values)
+		sum += valsSquared[i]; // adds the square of the value
+	    }
+	    
 	}
-	
-	leftVals = totVals - sumChoVals;
-	
-        // difference between values that were opened and all the values, leaving you with only the values of briefcases that weren't opened
+
     }
 
-    // returns the deal delt by the dealer
+    // returns the deal delt by the dealer (the geometric mean, multiplied by likability)
     public int deal(ArrayList chosenValues) {
 	
 	setVals(chosenValues); // sets values properly
-	int mean = leftVals / totBrief; // average of fValues in briefcases not opened
 	
-	return (int)(getLuck() * mean); // lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
+	double mean = sum / totBrief; // average of fValues in briefcases not opened
+	mean = Math.sqrt(mean); // to calculate the geometric average
+	
+	return (int)(getLuck() * mean);
+	// lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
 	
     }
 

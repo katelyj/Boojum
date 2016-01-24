@@ -95,21 +95,21 @@ public class Player implements Lucky {
 
     // for new players who don't know what's up
     public void rules() {
-	System.out.println("Before we begin, do you know how to play? (yes/no)\n");
+	System.out.println("Before we begin, do you know how to play? (y/n)\n");
 	String b = "";
 	
-	while ( (! b.equals("yes")) && (! b.equals("no")) ) { // to ensure a yes or no answer, only
+	while ( (! b.equals("y")) && (! b.equals("n")) ) { // to ensure a yes or no answer, only
 	    try {
 		b = in.readLine();
 	    }
 	    catch ( IOException e ) {}
 	    
-	    if ( (! b.equals("yes")) && (! b.equals("no")) ) { // so we can print an angry message!
+	    if ( (! b.equals("y")) && (! b.equals("n")) ) { // so we can print an angry message!
 		System.out.println("\nPlease choose yes or no!\n");
 	    }
 	}
 	
-	if ( b.equals("no") ) { // the user is clueless
+	if ( b.equals("n") ) { // the user is clueless
 	    System.out.println(rules);
 	    try { in.readLine(); }
 	    catch ( IOException e ) {}

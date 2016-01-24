@@ -185,16 +185,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	}
     }
 
-    // returns if a number is a valid amount to guess (aka if it's in the instance variable values)
-    public boolean isValue(int amount) {
-	for ( int v : values ) {
-	    if ( amount == v ) {
-		return true;
-	    }
-	}
-	return false;
-    }
-
+    
     // ~~~~~~~~~~~ METHODS -- GAMEPLAY ~~~~~~~~~~~
 
     // goes through case choosing r times
@@ -415,7 +406,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 		}
 		catch ( IOException e ) {}
 
-		if ( (! isValue(guess)) || (choVals.contains(guess)) ) { // so we can display an angry message
+		if ( (! isIn(guess,values)) || (choVals.contains(guess)) ) { // so we can display an angry message
 		    if ( guess != amount ) { // because amount is in choVals, so the if statement won't account for that
 			System.out.println("\nInvalid guesses are to your own detriment, man. Trust me.");
 			guess = 0;
