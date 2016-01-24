@@ -28,11 +28,11 @@ public class CaseHolders {
 	likePos = new String[] {"You're amazing! Keep on going!","You're on your way to success, my friend!",
 				"Call me when you're famous?","That's magnificant, you beautiful human you!",
 				"Brilliant! As always :)","Wow, you're my hero!","Wow!!! What a champion!"};
-	likeNeg = new String[] {"You'll do better next time!","No worries!","That's OK!", "Nice try!","You can do it!",
+	likeNeg = new String[] {"You'll do better next time!","No worries!","That's OK!", "Nice try!",
 				"Don't be sad!","We all make mistakes!","It happens!","I still love you!"};
 	unlikePos = new String[] {"Kinda good, I guess.","You just got lucky.","Remember, there is no skill.",
 				  "Don't get too excited.","People have done better.","<sarcastically> Well done, loser.","Whatever.",
-				  "Sure, you got one good draw.","I'll make sure it doesn't happen again."};
+				  "Sure, you got one good draw."};
 	unlikeNeg = new String[] {"You're trash.","LOL, you suck.","Why don't you just give up now?","*cough* *cough* Loser.",
 				  "Nice try. Not.","I totally saw that one coming.","Wow, what a failure. Like you in general, tbh."};
 	insults = new String[] {"Whimp.","Fine, have it your way.","I guess. Dud.","Okay. Whatever."};
@@ -75,7 +75,7 @@ public class CaseHolders {
 	}
 	
 	else { // if the player is neutral, whatever
-	    if ( brief > 50000 ) { // they got lucky!
+	    if ( brief > 50000 ) { // they did not get lucky :(
 		double prob = Math.random();
 		int pos = (int)(prob * negResponse.length);
 		return negResponse[pos];
@@ -85,7 +85,7 @@ public class CaseHolders {
 		int pos = (int)(prob * regResponse.length);
 		return regResponse[pos];
 	    }
-	    else { // they did not get lucky :(
+	    else { // they got lucky!
 		double prob = Math.random();
 		int pos = (int)(prob * posResponse.length);
 		return posResponse[pos];
@@ -104,7 +104,7 @@ public class CaseHolders {
     // the response at the very end
     public String finalResponse(int val) {
 
-	if ( val == 1000000 ) { // the user has won $1,000,000!
+	if ( val >= 1000000 ) { // the user has won $1,000,000! (or more?)
 	    return "Oh, my! That's absolutely amazing! Tell me your secrets?";
 	}
 	else if ( val > 75000 ) { // the user did really well

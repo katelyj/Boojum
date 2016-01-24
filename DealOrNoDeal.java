@@ -156,15 +156,22 @@ public class DealOrNoDeal extends Values implements Waiter  {
 
     // puts commas in appropriate place when printing numbers (for clarity)
     public static String commafy(int i) {
-	String s = "" + i;
-	
-	if ( s.length() < 4 ) { // no need to add commas
-	    return s;
+
+	if ( i < 0 ) { // the user has won negative money
+	    return "-" + commafy(Math.abs(i));
 	}
 	
-	else { // recursion yay
-	    return commafy(Integer.parseInt(s.substring(0, s.length() - 3))) + "," +         
-		s.substring(s.length() - 3, s.length());
+	else { // the user didn't do THAT badly!
+	    String s = "" + i;
+	
+	    if ( s.length() < 4 ) { // no need to add commas
+		return s;
+	    }
+	
+	    else { // recursion yay
+		return commafy(Integer.parseInt(s.substring(0, s.length() - 3))) + "," +         
+		    s.substring(s.length() - 3, s.length());
+	    }
 	}
     }
     
@@ -237,13 +244,13 @@ public class DealOrNoDeal extends Values implements Waiter  {
 		waits();
 
 		r -= 1; // one less case to open
-		System.out.println("\nYou have " + r + " more briefcase");
+		System.out.print("\nYou have " + r + " more briefcase");
 		
 		if ( r == 1 ) { // briefcase should be singular
-		    System.out.print(" to open!\n");
+		    System.out.print(" to open!\n\n");
 		}
 		else { // briefcase should be plural
-		    System.out.print("s to open!\n");
+		    System.out.print("s to open!\n\n");
 		}
 		
 		waits();
@@ -327,21 +334,21 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	System.out.println("--------------------------------------------------------------------------\n");
 	String ans = "";
 
-	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // to ensure a yes or no answer
+	while ( (! ans.equals("y")) && (! ans.equals("n")) ) { // to ensure a yes or no answer
 		
-	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(finalAmount) + " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (yes/no)\n" );
+	    System.out.println("Before we end... would you like to buy the very mysterious box 24 for $" + commafy(finalAmount) + " (all of your money)?\n\nIt contains a mystery prize... \nThe prize is either: DOUBLING your money, adding $10,000 to the amount you made, just getting your money back, getting half your money, or getting nothing (ending up with $0).\n\nWill you take that chance? (y/n)\n" );
 	    
 	    try {
 		ans = in.readLine();
 	    }
 	    catch ( IOException e ) {}
 
-	    if ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // so we can display an angry message
-		System.out.println("\nYes or no only, please.\n");
+	    if ( (! ans.equals("y")) && (! ans.equals("n")) ) { // so we can display an angry message
+		System.out.println("\ny or n only, please.\n");
 	    }
 	}
 	
-	if ( ans.equals("yes") ) { // the user has taken this chance
+	if ( ans.equals("y") ) { // the user has taken this chance
 	    System.out.println("\nHere we go...\n");
 	    System.out.println("bum");
 	    waits();
@@ -385,15 +392,15 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	System.out.println("\nBefore we show you what's in the case... \nwould you like to guess what it contains?");
 	String ans = "";
 	
-	while ( (! ans.equals("yes")) && (! ans.equals("no")) ) { // to ensure a yes or no answer
-	    System.out.println("\n(yes/no)\n");
+	while ( (! ans.equals("y")) && (! ans.equals("n")) ) { // to ensure a yes or no answer
+	    System.out.println("\n(y/n)\n");
 	    try {
 		ans = in.readLine();
 	    }
 	    catch ( IOException e ) {}
 	}
 
-	if ( ans.equals("yes") ) { // the player is taking a chance!
+	if ( ans.equals("y") ) { // the player is taking a chance!
 	    int guess = 0;
 	    
 	    while ( guess == 0 ) { // to ensure a valid guess
@@ -435,10 +442,6 @@ public class DealOrNoDeal extends Values implements Waiter  {
 
     // the true end of the game
     public void end() {
-
-	if ( finalAmount < 0 ) { // the user has won negative money
-	    finalAmount = 0; // we are not that mean
-	}
 	
 	box24(); // the final chance the user can take
 	gameOver = true;
