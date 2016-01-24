@@ -3,20 +3,21 @@
   =============================================*/
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Dealer extends Values implements Lucky {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
 
     private int totBrief;
-    private double luck;
+    private String luck;
     private double sum;
     private double[] valsSquared;
 
 
      // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
-    public Dealer (double l) {
+    public Dealer (String l) {
 	luck = l;
 	valsSquared = new double[fValues.length];
 
@@ -31,7 +32,7 @@ public class Dealer extends Values implements Lucky {
     
     // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~
 
-    // sets the values of totVals, leftVals, and sumChoVals
+    // sets the values of totBrief and sum(of the squares)
     public void setVals(ArrayList c) {
 
 	sum = 0;
@@ -53,15 +54,25 @@ public class Dealer extends Values implements Lucky {
 	setVals(chosenValues); // sets values properly
 	
 	double mean = sum / totBrief;
-	mean = Math.sqrt(mean); // to calculate the geometric average
-	
-	return (int)(getLuck() * mean);
+	mean = Math.sqrt(mean); // to calculate the geometric mean
+	Random rand = new Random();
+	double  scale = 0;
+	if (getLuck().equals("true")){
+	    scale = ((double)(rand.nextDouble() * .4))+ .9; //.9 to 1.3
+	}
+	else if (getLuck().equals("neither")){
+	    scale = ((double)(rand.nextDouble() * .5))+ .75;//.75 to 1.25
+	}
+	else {
+	    scale = ((double)(rand.nextDouble() * .5))+ .65;//.65 to 1.15
+	}
+	return (int)(mean * scale);
 	// lucky, you get a better deal than the average. likable, you get a worse deal (luck is lower)
 	
     }
 
     // accessor for luck
-    public double getLuck() {
+    public String getLuck() {
 	return luck;
     }
     

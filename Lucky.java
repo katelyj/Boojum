@@ -5,6 +5,6 @@
 
 public interface Lucky {
     
-    double getLuck();
+    String getLuck();
     
 } // end class Lucky

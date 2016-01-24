@@ -5,7 +5,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Player implements Lucky {
+public class Player implements Lucky, Waiter {
 
     // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
   
@@ -14,7 +14,7 @@ public class Player implements Lucky {
     
     private String name;
     private int yourCase;
-    private double luck;
+    private String luck;
     private int likability;
     
     private final String rules = "\nTHE RULES:\n\nIn this game, there are 24 briefcases filled with money, ranging from $1 to $1,000,000. Without knowing the amounts inside, you will choose a briefcase to be your own. This briefcase will stick with you throughout the game, and at the end, you will win whatever is inside of it.\n\nEach round, you will open a designated number of briefcases, revealing the amounts of money they have inside. This will give you a clue as to what is NOT in your own briefcase. And at the end of each round, you will be presented a certain amount of money: a deal. You can either make the deal and take this money, ending the game and never knowing how much was in your case, or reject the deal and keep opening more briefcases.\n\nIf you get to the end without making a deal, you will win whatever amount is in your own briefcase.\n\nNow, press enter to begin...\n";
@@ -26,7 +26,7 @@ public class Player implements Lucky {
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
 	
-	luck = 1;
+	luck = "neither";
 	likability = 0;
 	yourCase = -1;
 	name = "";
@@ -75,16 +75,19 @@ public class Player implements Lucky {
  
 	if ( n == 1 ) {
 	    System.out.println("\nCongrats, you are a regular person!\n");
+	    waits();
 	}
 	else if ( n == 2 ) {
-	    setLuck(0.9);
+	    setLuck("false");
 	    setLikability(1);
 	    System.out.println("\nCongrats, you are a likable person!\n");
+	    waits();
 	}
 	else {
-	    setLuck(1.1);
+	    setLuck("true");
 	    setLikability(-1);
 	    System.out.println("\nCongrats, you are a lucky person!\n");
+	    waits();
 	}
     }
 
@@ -176,6 +179,15 @@ public class Player implements Lucky {
 	    return dealOrNoDeal();
 	}
     }
+
+    public void waits() {
+	try {
+	    Thread.sleep(1400); // 1000 milliseconds is one second
+	}
+	catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+    }
        
     // accessor for case
     public int getYourCase() {
@@ -188,7 +200,7 @@ public class Player implements Lucky {
     }
 
     // accessor for luck
-    public double getLuck() {
+    public String getLuck() {
 	return luck;
     }
 
@@ -198,7 +210,7 @@ public class Player implements Lucky {
     }
 
     // mutator for luck
-    public void setLuck(double l) {
+    public void setLuck(String l) {
 	luck = l;
     }
     

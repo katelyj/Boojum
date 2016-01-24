@@ -30,7 +30,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
     // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
 
     public DealOrNoDeal() {
-        super();
+        super(); //gets fvalues and choVals
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
 	
@@ -59,7 +59,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	    ((Briefcase)cases.get(x)).setValue(values[x]);
 	}
 
-	// sets up our three "characters"
+	// sets up our three "characters", and the animation
 	you = new Player();
 	banker = new Dealer(you.getLuck());
 	caseholder = new CaseHolders(you.getLikability());
@@ -106,7 +106,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	    }
 	}
 
-	// displaying in the correct format
+	// displaying in the correct format (lowest numbers on the bottom)
 	for ( int x = 0 ; x < d.length ; x++ ) {
 	    for ( int y = d[x].length - 1 ; y >= 0 ; y-- ) {
 		if ( ! ((Briefcase)cases.get(d[x][y])).isOpen() ) { // if the briefcase is open, it displays
@@ -239,7 +239,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 		System.out.println("\n" + caseholder.response(val)); // shows an appropriate comment
 		waits();
 
-		r -= 1; // one less case to open
+		r -= 1; // one fewer cases to open
 		System.out.print("\nYou have " + r + " more briefcase");
 		
 		if ( r == 1 ) { // briefcase should be singular
