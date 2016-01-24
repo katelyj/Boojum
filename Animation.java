@@ -4,20 +4,6 @@
 
 public class Animation implements Waiter {
 
-    // ~~~~~~~~~~~ INSTANCE VARIABLES ~~~~~~~~~~~
-    
-    private String person;
-
-    
-    // ~~~~~~~~~~~ CONSTRUCTOR ~~~~~~~~~~~
-    
-    public Animation(String p) {
-	person = p;
-    }
-
-    
-    // ~~~~~~~~~~~ METHODS ~~~~~~~~~~~
-
     // waits 100 milliseconds
     public void waits() {
 	try {

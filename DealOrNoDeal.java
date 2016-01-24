@@ -17,6 +17,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
     private Player you;
     private Dealer banker;
     private CaseHolders caseholder;
+    private Animation ani;
     
     private boolean gameOver;
     private int finalAmount;
@@ -62,6 +63,10 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	you = new Player();
 	banker = new Dealer(you.getLuck());
 	caseholder = new CaseHolders(you.getLikability());
+	ani = new Animation();
+
+	ani.dance();
+	System.out.println("Hello, " + you.getName() + ", welcome to Deal Or No Deal!!!\n");
     }
 
     
