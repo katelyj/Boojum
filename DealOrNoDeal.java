@@ -66,7 +66,7 @@ public class DealOrNoDeal extends Values implements Waiter  {
 	ani = new Animation();
 
 	ani.dance();
-	System.out.println("Hello, " + you.getName() + ", welcome to Deal Or No Deal!!!\n");
+	System.out.println("Hello, " + you.getName() + ", welcome to What's the Dealio?!!! (*an improved version of the popular game Deal Or No Deal?)\n");
     }
 
     
